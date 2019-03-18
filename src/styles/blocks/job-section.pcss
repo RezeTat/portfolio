@@ -1,0 +1,122 @@
+.job-section{
+    width: 100%;
+    position: relative;
+}
+
+.slaider__scroll{
+    display: flex;
+}
+.scroll-up__icon{
+    width: 10px;
+    height: 8px;
+    transform: rotate(-90deg);
+    fill: #414c63; 
+        &:hover{
+            fill: #fff;
+        }
+}
+
+.scroll-down__icon{
+    width: 10px;
+    height: 8px;
+    transform: rotate(90deg);
+    fill: #414c63; 
+}
+
+.slaider__scroll-up, .slaider__scroll-down{
+    background: #2d3c4e;
+    width: 30px;
+    height: 30px;
+    border: 1px solid transparent;
+    &:hover{
+        background: #5500f2;
+    }
+    &:hover .scroll-down__icon{
+        fill: #fff;
+    }
+    &:hover .scroll-up__icon{
+        fill: #fff;
+    }
+}
+
+.slaider__scroll{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    text-align: center;
+}
+
+.job-section__content{
+    display: flex;
+    padding-top: 90px;
+
+    &__title{
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px
+
+    }
+}
+
+.slaider-ipg{
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    &:hover{
+        border: 3px solid #5500f2;
+    }
+}
+
+.desc-job{
+    width: 45%;
+    padding-left: 140px;
+    &__info{
+        display: flex;
+        padding-bottom: 50px;
+        &-name{
+            background:rgba(122, 160, 197, 0.1);
+            padding: 5px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 48px;
+            text-align: center;
+            margin-right: 15px;
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+    &__title{
+        padding-bottom: 44px;
+        font-size: 30px; 
+        font-weight: 700;
+        line-height: 48px; 
+    }
+    &__text{
+        padding-bottom: 50px;
+    }
+}
+
+.desc-job__btn{
+    color:#4b6fd7;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 48px;
+    padding-left: 20px;
+    &::before{
+        background: svg-load('link.svg', fill=#4b6fd7 , width=73px, height=63px);
+    }
+}
+
+.desc-job__button{
+    display: flex;
+    align-items: center;
+}
+
+.link-class{
+    fill:#4b6fd7;
+    width:15px;
+    height:15px;
+}

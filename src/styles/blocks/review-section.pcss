@@ -1,0 +1,116 @@
+.review-section{
+    height: 100%;
+}
+
+.conteiner-review{
+    padding-left: 10%;
+    padding-right: 26%;
+    padding-top: 8%;
+}
+
+.review__scroll{
+    display: flex;
+    position: relative;
+}
+
+.slaider__scroll-prev{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-color: #2d3c4e;
+    position: relative;
+    margin: 0 30px;
+}
+
+.slaider__scroll-next{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-color: #2d3c4e;
+    position: relative;
+}
+
+.scroll-next__icon{
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.scroll-prev__icon{
+    width: 8px;
+    height: 10px;
+    transform: rotate(180deg)  translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.review-section{
+    &__list{
+    display: flex;
+    flex: 1;
+    }
+    &__item{
+        display: flex;
+        padding-top: 70px;
+        width: 100%;
+    }
+    &__text{
+    }
+    &__roll{
+        display: flex;
+        width: 100%;
+    }
+    &__desc{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    }
+    &__text{
+    font-size: 16px; 
+    font-weight: 600;
+    line-height: 30px; 
+    }
+    &__content{
+        width: 100%;
+    }
+}
+
+
+.review-ipg{
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+}
+
+.quote-class{
+    width: 75px;
+    height: 63px;
+    fill: #ccc;
+}
+
+.review-sub{
+    display: flex;
+    padding-top: 40px;
+    &__icon{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    &__text-name{
+    font-size: 18px; 
+    font-weight: 700;
+    line-height: 48px; 
+    }
+    &__text-job{
+        font-size: 16px; 
+        font-weight: 600;
+        line-height: 30px; 
+    }
+}
+
