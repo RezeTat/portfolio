@@ -1,19 +1,18 @@
 .job-section{
     width: 100%;
     position: relative;
+    height: 100%;
 }
 
 .slaider__scroll{
     display: flex;
 }
+
 .scroll-up__icon{
     width: 10px;
     height: 8px;
     transform: rotate(-90deg);
     fill: #414c63; 
-        &:hover{
-            fill: #fff;
-        }
 }
 
 .scroll-down__icon{
@@ -30,12 +29,30 @@
     border: 1px solid transparent;
     &:hover{
         background: #5500f2;
-    }
-    &:hover .scroll-down__icon{
+        .scroll-down__icon{
         fill: #fff;
-    }
-    &:hover .scroll-up__icon{
+        }
+        .scroll-up__icon{
         fill: #fff;
+        }
+    }
+    &:focus{
+        background: #5500f2;
+        .scroll-down__icon{
+        fill: #fff;
+        }
+        .scroll-up__icon{
+        fill: #fff;
+        }
+    }
+    &:active{
+        background: gold;
+        .scroll-down__icon{
+        fill: #5500f2;
+        }
+        .scroll-up__icon{
+        fill: #5500f2;
+        }
     }
 }
 
@@ -53,8 +70,7 @@
     &__title{
     font-size: 36px;
     font-weight: 700;
-    line-height: 48px
-
+    line-height: 48px;
     }
 }
 
@@ -62,8 +78,17 @@
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    &:hover{
+}
+
+.slaider-job__link{
+    &:hover .slaider-ipg{
         border: 3px solid #5500f2;
+    }
+    &:focus .slaider-ipg{
+        border: 3px solid #5500f2;
+    }
+    &:active .slaider-ipg{
+        border: 3px solid gold;
     }
 }
 
@@ -113,6 +138,18 @@
 .desc-job__button{
     display: flex;
     align-items: center;
+        &:hover {
+            border-bottom: 2px solid #4b6fd7;
+        }
+        &:focus {
+            border-bottom: 2px solid #4b6fd7;
+        }
+        &:active {
+            border-bottom: 2px solid gold;
+            .link-class{
+                fill: gold;
+            }
+        }
 }
 
 .link-class{

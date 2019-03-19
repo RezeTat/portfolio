@@ -21,6 +21,26 @@
     border-color: #2d3c4e;
     position: relative;
     margin: 0 30px;
+    background: transparent;
+        &:hover{
+            border: 1px solid #5500f2;
+        .scroll-prev__icon{
+            fill: #5500f2;
+            }
+        }
+        &:focus{
+            border: 1px solid #5500f2;
+        .scroll-prev__icon{
+            fill: #5500f2;
+            }
+        }
+        &:active{
+            border: 1px solid gold;
+            background: gold;
+        .scroll-prev__icon{
+            fill: #5500f2;
+            }
+        }
 }
 
 .slaider__scroll-next{
@@ -30,6 +50,26 @@
     border: 1px solid transparent;
     border-color: #2d3c4e;
     position: relative;
+    background: transparent;
+        &:hover{
+                border:1px solid #5500f2;
+        .scroll-next__icon{
+            fill: #5500f2;
+            }
+        }
+         &:focus{
+                border:1px solid #5500f2;
+        .scroll-next__icon{
+            fill: #5500f2;
+            }
+        }
+         &:active{
+            border: 1px solid gold;
+            background: gold;;
+        .scroll-next__icon{
+            fill: #5500f2;
+            }
+        }
 }
 
 .scroll-next__icon{
@@ -44,7 +84,7 @@
 .scroll-prev__icon{
     width: 8px;
     height: 10px;
-    transform: rotate(180deg)  translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(180deg);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -84,9 +124,11 @@
 
 
 .review-ipg{
-    width: 73px;
-    height: 73px;
+    width: 100%;
+    height: auto;
     border-radius: 50%;
+    width: 100%;
+    height: auto;
 }
 
 .quote-class{
@@ -99,18 +141,22 @@
     display: flex;
     padding-top: 40px;
     &__icon{
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 73px;
+        max-height: 73px;
+        margin-right: 25px;
     }
-    &__text-name{
-    font-size: 18px; 
-    font-weight: 700;
-    line-height: 48px; 
-    }
-    &__text-job{
-        font-size: 16px; 
-        font-weight: 600;
-        line-height: 30px; 
+    &__text{
+        display: flex;
+        flex-direction: column;    
+        &-name{
+        font-size: 18px; 
+        font-weight: 700;
+        line-height: 48px; 
+        }
+        &__text-job{
+            font-size: 16px; 
+            font-weight: 600;
+            line-height: 30px; 
+        }
     }
 }
-
