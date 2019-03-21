@@ -9,6 +9,25 @@
       width: 50px;
       height: 50px;
       position: relative;
+      &:hover{
+        border: 1px solid #5500f2;
+          .socials__icon{
+            fill: #5500f2;
+          } 
+      }
+      &:focus{
+        border: 1px solid #5500f2;
+          .socials__icon{
+              fill: #5500f2;
+            }
+      }
+      &:active{
+        border: 1px solid gold;
+          .socials__icon{
+              fill: gold;
+            }
+      }
+
 
       .socials__icon {
         position: absolute;
@@ -19,23 +38,19 @@
         height: 20px;
         fill: #ccc;
       }
-
-      &:hover {
-        .socials__icon {
-          fill: #5500f2;
-        }
       }
-
-    }
   }
 }
 
 .socials__item {
   margin-right: 40px;
   padding-bottom: 45px;
-  &:hover .socials__link{
-    fill: #5500f2;
-  }
+    &:hover .socials__link{
+      fill: #5500f2;
+    }
+    &:active .socials__link{
+    fill: gold;
+    }
 
   &:last-child {
     margin-right: 0;
@@ -46,5 +61,8 @@
   width: 25px;
   height: 31px;
   display: block;
+  &:focus{
+      fill: #5500f2;
+    }
 }
 

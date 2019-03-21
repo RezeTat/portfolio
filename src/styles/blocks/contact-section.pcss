@@ -19,6 +19,12 @@
     &-textarea{
         resize: none;
     }
+    &:focus{
+        border-bottom: 2px solid #5500f2;
+        .form-class{
+        fill: #5500f2;
+        }
+    }
 }
 
 .form-name__label{
@@ -32,7 +38,17 @@
     border-bottom: 2px solid #414c63;
     &:hover{
         border-bottom: 2px solid #5500f2;
+        .form-class{
+        fill: #5500f2;
+        }
     }
+    
+    &:active{
+        border-bottom: 2px solid gold;
+        .form-class{
+        fill: gold;
+        }
+    }    
 }
 
 .form__btn{
@@ -48,6 +64,16 @@
     font-size: 18px;
     font-weight: 700;
     line-height: 48px;
+    &:hover{
+        background: #5500f2;
+    }
+    &:focus{
+        background: #5500f2;
+    }
+    &:active{
+        background: gold;
+        color: #5500f2;
+    }
 
 }
 
@@ -61,7 +87,4 @@
     display: flex;
     justify-content: center;
     align-items:last baseline;
-    &:hover .form-class{
-        fill: #5500f2;
-    }
 }
