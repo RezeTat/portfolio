@@ -11,62 +11,77 @@ html(lang="en")
     .wrapper
       .main-content
         section.welcome-section
-          section.main-section
-            .container
-              .mycontainer
-                header.header
-                  a.logo(href="#" ) RZ
-                  .header-roll
-                    nav.nav
-                      ul.nav__list
-                        - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Связаться'];
-                        each item in menu
-                          li.nav__item
-                            a(href="").nav__link #{item}
-                    .header__links
-                      ul.socials
-                        - var socials = ['insta', 'vk', 'github'];
-                        each item in socials
-                          li.socials__item
-                            a(href="").socials__link
-                              +icon(`${item}`, 'socials__icon')
-                h1.user-content
-                  span.user-content__desc Личный сайт вэб разработчика
-                  span.user-content__name Резе Татьяна
-                button.main-button Скролл
-                  +icon('scroll', 'scroll-class')
-          section.aboutme-section
-            .container
-              .information
-                .information__fact
-                  +image('content/user.jpg', 'my-foto', "фото вэб-разработчика")
-                  .user__data
-                      table.user__data-table
-                        - 
-                          var data = [
-                            ['Проживаю', 'Москва'],
-                            ['Возраст', '33 года'],
-                            ['Родилась', '28 мая 1985'],
-                          ]
-                        each row in data
-                          tr.user__data-row
-                            td.user__data-cell #{row[0]}
-                            td.user__data-cell #{row[1]}
-                .information__desc 
-                  h2.information__desc-point   
-                    span.information__desc-point-text Привет,меня зовут 
-                    span.information__desc-point__name Резе Татьяна 
-                    span.information__desc-point-text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                  p.information__desc-remark Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-          .triangles
-            svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
-              polygon(
-                points="0,0 0,100 1000,100"
-              )
-            svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
-              polygon(
-                points="0,100 1000,100 1000,0"
-              )
+          section.parallax
+            .parallax__layer(data-speed="0.1")
+              +image('content/Sky.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.25")
+              +image('content/Mountain.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.35")
+              +image('content/Baloon.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.38")
+              +image('content/Cloud.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.45")
+              +image('content/Man.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.48")
+              +image('content/Mountain1.png', 'parallax__image', "горный пейзаж")
+            .parallax__layer(data-speed="0.50")
+              +image('content/White.png', 'parallax__image', "горный пейзаж")
+            section.main-section
+              .container
+                .mycontainer
+                  header.header
+                    a.logo(href="#" ) RZ
+                    .header-roll
+                      nav.nav
+                        ul.nav__list
+                          - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Связаться'];
+                          each item in menu
+                            li.nav__item
+                              a(href="").nav__link #{item}
+                      .header__links
+                        ul.socials
+                          - var socials = ['insta', 'vk', 'github'];
+                          each item in socials
+                            li.socials__item
+                              a(href="").socials__link
+                                +icon(`${item}`, 'socials__icon')
+                  h1.user-content
+                    span.user-content__desc Личный сайт вэб разработчика
+                    span.user-content__name Резе Татьяна
+                  button.main-button Скролл
+                    +icon('scroll', 'scroll-class')
+            section.aboutme-section
+              .container
+                .information
+                  .information__fact
+                    +image('content/user.jpg', 'my-foto', "фото вэб-разработчика")
+                    .user__data
+                        table.user__data-table
+                          - 
+                            var data = [
+                              ['Проживаю', 'Москва'],
+                              ['Возраст', '33 года'],
+                              ['Родилась', '28 мая 1985'],
+                            ]
+                          each row in data
+                            tr.user__data-row
+                              td.user__data-cell #{row[0]}
+                              td.user__data-cell #{row[1]}
+                  .information__desc 
+                    h2.information__desc-point   
+                      span.information__desc-point-text Привет,меня зовут 
+                      span.information__desc-point__name Резе Татьяна 
+                      span.information__desc-point-text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                    p.information__desc-remark Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+            .triangles
+              svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                polygon(
+                  points="0,0 0,100 1000,100"
+                )
+              svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+                polygon(
+                  points="0,100 1000,100 1000,0"
+                )
         section.good-section
           .container
             .good-desc
@@ -167,12 +182,12 @@ html(lang="en")
                       span.form-name__label Введите ваше имя
                       .conteiner__label
                         +icon('user', 'form-class')
-                        input.form__input(type='text', name='name',placeholder='Ковальчук Дмитрий', required, tabindex='1')
+                        input.form__input(type='text', name='name',placeholder='Ковальчук Дмитрий', required)
                     label.form-block(for='')
                       span.form-name__label Введите ваш email
                       .conteiner__label
                         +icon('envelope', 'form-class')
-                        input.form__input(name='email', type='email', placeholder='loftschool@study.com',required,tabindex='2')
+                        input.form__input(name='email', type='email', placeholder='loftschool@study.com',required)
                 .myForm__part
                   .form-row
                     label.form-block(for='')
@@ -180,7 +195,7 @@ html(lang="en")
                       .conteiner__label
                         +icon('message', 'form-class')
                         textarea.form__input.form__input-textarea(name='comment', cols='50', rows='2',required, 
-                        placeholder='Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса', tabindex='3')
+                        placeholder='Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса')
                 button.form__btn Отправить
         footer.footer
           .container.footer__container
