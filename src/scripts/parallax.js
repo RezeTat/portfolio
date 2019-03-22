@@ -1,6 +1,9 @@
 const parallax = document.querySelector('.parallax');
 const layers = parallax.children;
 
+if (window.innerWidth >=768){
+    console.log(window.innerWidth);
+
 function moveLayersDependsOnScroll(wScroll){
 
     Array.from(layers).forEach(layer=>{
@@ -8,7 +11,7 @@ function moveLayersDependsOnScroll(wScroll){
         const divider = layer.dataset.speed;
         const strafe = wScroll * divider / 10;
 
-        layer.style.transform = `transleteY(-${strafe}%)`;
+        layer.style.transform = `translateY(-${strafe}%)`;
     });
 }
 
@@ -17,3 +20,4 @@ window.addEventListener('scroll', e=>{
     moveLayersDependsOnScroll(wScroll);
 
 });
+}

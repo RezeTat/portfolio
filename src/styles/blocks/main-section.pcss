@@ -88,6 +88,9 @@
     display: flex;
     flex-direction: column;
     z-index: 10;
+    @include desktop{
+        flex-direction: row;
+    }
 }
 
 .user-content__desc{
@@ -95,6 +98,9 @@
     font-weight: 600;
     line-height: 30px;
     text-align: center;
+    @include desktop{
+        padding-right: 60px;
+    }
 }
 
 .user-content__name{
@@ -113,6 +119,7 @@
     font-weight: 600;
     line-height: 30px; 
     z-index: 10;
+    padding-bottom: 150px;
     &:hover{
         color: #5500f2;
         .scroll-class{
