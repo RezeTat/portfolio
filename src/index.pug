@@ -82,55 +82,21 @@ html(lang="en")
             polygon(
               points="0,100 1000,100 1000,0"
             )
-        section.good-section
-          .container
-            .good-desc
-              +image('content/rucksack.png', "good-desc__ipg", "рюкзак")
-              .good-desc__skills
-                h2.good-desc__skills-title Чем я могу быть полезна вам
-                p.good-desc__skills-text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-                ul.user-skills
-                  - 
-                    var skills = [
-                      ['Front-end', ['html', 'css', 'js']],
-                      ['Workflow', ['git', 'gulp', 'webpack']],
-                    ]
-                  each item in skills
-                    li.user-skills__item.skills-row
-                      h3.skills__name #{item[0]}
-                      ul.good-desc__skills-list
-                        each skill in item[1]
-                          li.good-desc__skills-item
-                            .good-desc__skills-link
-                              svg(viewBox="0 0 100 100" preserveAspectRatio="none").percentage
-                                circle.circle.circle__under(cx="50", cy="50", r="40")
-                                circle.circle.circle__above(cx="50", cy="50", r="40")
-                                linear-gradient()
-                              .cirkle__name #{skill}
-        section.job-section
-          .container
-            h2.job-section__title Мои работы
-            .job-section__content
-              .slaider-job
-                ul.slaider-job__list
-                  li.slaider-job__item
-                    a.slaider-job__link(href="#")
-                      +image('content/job.png', "slaider-ipg", "фото проекта")
-                    .slaider__scroll
-                      button.slaider__scroll-up
-                        +icon('arrow-down', 'scroll-up__icon')
-                      button.slaider__scroll-down
-                        +icon('arrow-down', 'scroll-down__icon')
-              .desc-job
-                .desc-job__info
-                  span.desc-job__info-name HTML
-                  span.desc-job__info-name CSS
-                  span.desc-job__info-name JavaScript
-                h3.desc-job__title Сайт школы образования
-                p.desc-job__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                a.desc-job__button(href="#")
-                  +icon('link', 'link-class')
-                  span.desc-job__btn Посмотреть сайт
+        section.values
+            .container.values__container
+              .values__wrapper
+                .values__title
+                  .values__title-container
+                    .values__title-text Чем я могу быть полезна вам
+                    .values__content
+                      p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                .values__widget
+                  #skills-component
+        section.works
+          .container.works__container
+            .section-title.works__section-title Мои работы
+            .works__content
+              #slider-component
         .triangles-down
           svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
             polygon(
@@ -141,18 +107,18 @@ html(lang="en")
               points="0,0 1000,100 1000,0"
             )
         section.relation-section
-          section.parallax
-            .parallax__layer(data-speed="0")
+          section.parallax-down
+            .parallax__layer-down(data-speed="0")
               +image('content/1.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer(data-speed="0.25")
+            .parallax__layer-down(data-speed="0.25")
               +image('content/2.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer(data-speed="0.35")
+            .parallax__layer-down(data-speed="0.35")
               +image('content/3.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer(data-speed="0.38")
+            .parallax__layer-down(data-speed="0.38")
               +image('content/4.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer(data-speed="0.45")
+            .parallax__layer-down(data-speed="0.45")
               +image('content/5.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer(data-speed="0.48")
+            .parallax__layer-down(data-speed="0.48")
               +image('content/6.png', 'parallax__img', "картинка с Буддой")
           section.review-section
             .container.conteiner-review
@@ -239,6 +205,7 @@ html(lang="en")
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                     p Martin Golding 
 
+    include ./templates/entry.pug
 
 
 
