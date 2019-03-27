@@ -1,0 +1,152 @@
+.menu-link{
+	vertical-align: middle;
+	position: relative;
+	height: rem(22px);
+	align-items: center;
+	margin-left: rem(30px);
+  	display: none;
+  @include tablets() {
+    display: flex;
+  }
+}
+
+.menu-link__line{
+    border-top: 2px solid #414c63;
+	border-bottom: 2px solid #414c63;
+	margin-left: 70px;
+
+	&, &:before, &:after {
+		background: #414c63;
+		width: 30px;
+		height: 5px;
+		border-radius: 3px;
+
+	}
+
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+	}
+
+	&:before {
+		top: 0;
+		@include phones{
+			top: 8px;
+		}
+	}
+
+	&:after {
+		bottom: 0;
+		@include phones{
+			bottom: 8px;
+		}
+	}
+}
+
+.popup__close {
+	display: none;
+	@include tablets{
+	display: block;
+	opacity: 1;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background: transparent;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+}
+
+.popup__close-svg {
+	@include tablets{
+	fill: #414c63;
+	width: 20px;
+	height: 20px;
+}
+}
+
+
+
+
+.header__middle{
+    @include tablets{
+        position: fixed;
+        top: 0;
+		text-align: center;
+		opacity: 0;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 48px;
+}
+}
+
+.nav__list-header{
+    display: flex; 
+    white-space: nowrap;
+    @include tablets{
+        flex-direction: column;
+        padding-top: 104%;
+        font-size: 24px;
+        color: #000;
+        line-height: 1.6;
+        }       
+        @include phones{
+            padding-top: 44%;
+        }
+}
+
+.nav{
+    display: inline-block;
+    vertical-align: top;
+    align-items: center;
+}
+
+.socials-menu-link{
+	display: none;
+	&.active{
+		position: absolute;
+		z-index: 100;
+		top:47%;
+		left: 65%;
+		display: flex;
+		@include phones{
+			top: 26%;
+			left: 28%;
+		}
+	}
+}
+
+.opened{
+	@include tablets{
+	right: 0;
+	opacity: 1;
+	transition: opasity 0.3;
+	width: 40%;
+	height: 100%;
+	z-index: 100;
+	background: #fff;
+}
+	@include phones{
+		width: 100%;
+	}
+}
+
+.nav__item{
+	@include tablets{
+		margin-right: 0;
+	}
+}
+
+.header__middle.opened {
+	.user-content{
+		display: none;
+	}
+}
+
+.testClass{
+	@include tablets{
+		overflow: hidden;
+	}
+}
