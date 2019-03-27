@@ -13,7 +13,7 @@ new Vue({
       flickityOptions: {
         prevNextButtons: false,
         pageDots: false,
-        groupCells: 2,
+        groupCells: true,
         wrapAround: true,
 
         

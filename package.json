@@ -56,6 +56,7 @@
     "vue": "^2.6.7",
     "vue-burger-menu": "^2.0.1",
     "vue-flickity": "^1.1.2",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vue-scrollto": "^2.15.0"
   }
 }

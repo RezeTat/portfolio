@@ -26,19 +26,19 @@ html(lang="en")
               +image('content/Mountain1.png', 'parallax__image', "горный пейзаж")
             .parallax__layer(data-speed="0.48")
               +image('content/White.png', 'parallax__image', "горный пейзаж")
-          section.main-section
+          section.main-section#home
             .container
               .mycontainer
                 header.header
                   a.logo(href="#" ) RZ
                   .header-roll
-                    .header__middle
+                    .header__middle#header-scroll
                       nav.nav
                         ul.nav__list.nav__list-header
-                          - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Связаться'];
+                          - var menu = [['Главная','#home'], ['Обо мне', '#about'], ['Навыки','#skills'] , ['Работы','#works'] , ['Отзывы','#reviews'], ['Связаться','#contacts']];
                           each item in menu
                             li.nav__item
-                              a(href="").nav__link #{item}
+                              a(href=`${item[1]}`).nav__link #{item[0]}
                       a.popup__close(href="#")
                           +icon('remove','popup__close-svg')
                     .header__links
@@ -59,9 +59,9 @@ html(lang="en")
                 h1.user-content
                   span.user-content__desc Личный сайт #[span.user-content__occ веб разработчика]
                   span.user-content__name Резе Татьяна
-                button.main-button Скролл
+                button.main-button(id="arrow-scroll", v-scroll-to="'#about'") Скролл
                   +icon('scroll', 'scroll-class')
-          section.aboutme-section
+          section.aboutme-section#about
               .container
                 .information
                   .information__fact
@@ -93,7 +93,7 @@ html(lang="en")
             polygon(
               points="0,100 1000,100 1000,0"
             )
-        section.values
+        section.values#skills
             .container.values__container
               .values__wrapper
                 .values__title
@@ -103,7 +103,7 @@ html(lang="en")
                       p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                 .values__widget
                   #skills-component
-        section.works
+        section.works#works
           .container.works__container
             .section-title.works__section-title Мои работы
             .works__content
@@ -182,7 +182,7 @@ html(lang="en")
                         .review-sub__text
                           span.review-sub__text-name Владимир Сабанцев
                           span.review-sub__text-job Преподаватель
-          section.contact-section
+          section.contact-section#contacts
             .container
               h2.contact-section__title Связаться со мной
               form.form
@@ -218,10 +218,10 @@ html(lang="en")
             .footer__data
               .footer__menu
                 nav.nav.nav--color-white
-                  ul.nav__list.nav__list-footer
+                  ul.nav__list.nav__list-footer#footer-scroll
                     each item in menu
                       li.nav__item
-                        a(href="").nav__link #{item}
+                        a(href=`${item[1]}`).nav__link #{item[0]}
               .footer__data-columns
                 .footer__data-col
                   article.footer__text
