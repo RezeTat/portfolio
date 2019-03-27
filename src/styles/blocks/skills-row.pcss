@@ -8,11 +8,15 @@
   display: flex;
   flex-wrap: wrap;
   margin-left: -4%;
-  @include phones {
+  @include tablets{
     justify-content: center;
+    align-items: center;
   }
 }
 
 .skills-row__item {
   margin-left: 4%;
+    @include tablets{
+      margin-left: 0;
+    }
 }

@@ -32,21 +32,32 @@ html(lang="en")
                 header.header
                   a.logo(href="#" ) RZ
                   .header-roll
-                    nav.nav
-                      ul.nav__list
-                        - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Связаться'];
-                        each item in menu
-                          li.nav__item
-                            a(href="").nav__link #{item}
+                    .header__middle
+                      nav.nav
+                        ul.nav__list.nav__list-header
+                          - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Связаться'];
+                          each item in menu
+                            li.nav__item
+                              a(href="").nav__link #{item}
+                      a.popup__close(href="#")
+                          +icon('remove','popup__close-svg')
                     .header__links
-                      ul.socials
+                      ul.socials.socials-header
+                        - var socials = ['insta', 'vk', 'github'];
+                        each item in socials
+                          li.socials__item
+                            a(href="").socials__link
+                              +icon(`${item}`, 'socials__icon')
+                      a.menu-link(href="#")
+                        .menu-link__line
+                      ul.socials.socials-menu-link
                         - var socials = ['insta', 'vk', 'github'];
                         each item in socials
                           li.socials__item
                             a(href="").socials__link
                               +icon(`${item}`, 'socials__icon')
                 h1.user-content
-                  span.user-content__desc Личный сайт вэб разработчика
+                  span.user-content__desc Личный сайт #[span.user-content__occ веб разработчика]
                   span.user-content__name Резе Татьяна
                 button.main-button Скролл
                   +icon('scroll', 'scroll-class')
@@ -65,8 +76,8 @@ html(lang="en")
                             ]
                           each row in data
                             tr.user__data-row
-                              td.user__data-cell #{row[0]}
-                              td.user__data-cell #{row[1]}
+                              td.user__data-title #{row[0]}
+                              td.user__data-content #{row[1]}
                   .information__desc 
                     h2.information__desc-point   
                       span.information__desc-point-text Привет,меня зовут 
@@ -107,31 +118,31 @@ html(lang="en")
               points="0,0 1000,100 1000,0"
             )
         section.relation-section
-          section.parallax-down
-            .parallax__layer-down(data-speed="0")
+          section.parallax
+            .parallax__layer(data-speed="0")
               +image('content/1.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer-down(data-speed="0.25")
+            .parallax__layer(data-speed="0.25")
               +image('content/2.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer-down(data-speed="0.35")
+            .parallax__layer(data-speed="0.35")
               +image('content/3.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer-down(data-speed="0.38")
+            .parallax__layer(data-speed="0.38")
               +image('content/4.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer-down(data-speed="0.45")
+            .parallax__layer(data-speed="0.45")
               +image('content/5.png', 'parallax__img', "картинка с Буддой")
-            .parallax__layer-down(data-speed="0.48")
+            .parallax__layer(data-speed="0.48")
               +image('content/6.png', 'parallax__img', "картинка с Буддой")
-          section.review-section
+          section.review-section#reviews
             .container.conteiner-review
               .review-section__roll
                 h2.review-section__roll-title Что обо мне говорят
                 .review__scroll
-                  button.slaider__scroll-prev
+                  button.slaider__scroll-prev(@click="previous()")
                     +icon('arrow-down', 'scroll-prev__icon')
-                  button.slaider__scroll-next
+                  button.slaider__scroll-next(@click="next()")
                     +icon('arrow-down', 'scroll-next__icon')
               .review-section__content
-                ul.review-section__list
-                  li.review-section__item
+                flickity(ref="flickity" :options="flickityOptions").review-section__list
+                  .review-section__item.carousel-cell
                     +icon('quote', 'quote-class')
                     .review-section__desc
                       article.review-section__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -141,7 +152,27 @@ html(lang="en")
                         .review-sub__text
                           span.review-sub__text-name Ковальчук Дмитрий
                           span.review-sub__text-job Основатель Loftschool
-                  li.review-section__item
+                  .review-section__item.carousel-cell
+                    +icon('quote', 'quote-class')
+                    .review-section__desc
+                      article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
+                      .review-sub
+                        .review-sub__icon
+                          +image('content/sabancev.jpg', 'review-ipg', "аватар")
+                        .review-sub__text
+                          span.review-sub__text-name Владимир Сабанцев
+                          span.review-sub__text-job Преподаватель
+                  .review-section__item.carousel-cell
+                    +icon('quote', 'quote-class')
+                    .review-section__desc
+                      article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
+                      .review-sub
+                        .review-sub__icon
+                          +image('content/sabancev.jpg', 'review-ipg', "аватар")
+                        .review-sub__text
+                          span.review-sub__text-name Владимир Сабанцев
+                          span.review-sub__text-job Преподаватель
+                  .review-section__item.carousel-cell
                     +icon('quote', 'quote-class')
                     .review-section__desc
                       article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
@@ -173,8 +204,8 @@ html(lang="en")
                       span.form-name__label Сообщение к письму
                       .conteiner__label
                         +icon('message', 'form-class')
-                        textarea.form__input.form__input-textarea(name='comment', cols='50', rows='2',required, 
-                        placeholder='Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса')
+                        textarea.form__input.form__input-textarea(name='comment',required, 
+                        placeholder='Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса')
                 button.form__btn Отправить
         footer.footer
           .container.footer__container
@@ -187,7 +218,7 @@ html(lang="en")
             .footer__data
               .footer__menu
                 nav.nav.nav--color-white
-                  ul.nav__list
+                  ul.nav__list.nav__list-footer
                     each item in menu
                       li.nav__item
                         a(href="").nav__link #{item}
@@ -202,8 +233,8 @@ html(lang="en")
                           +icon(`${item}`, 'socials__icon')
                 .footer__data-col
                   article.footer__text
-                    p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-                    p Martin Golding 
+                    p.footer__text-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                    span.footer__text-author Martin Golding 
 
     include ./templates/entry.pug
 

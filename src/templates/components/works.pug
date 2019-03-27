@@ -46,7 +46,8 @@ script(type="text/x-template")#slider-info
     .works-slider__desc
       p {{currentWork.desc}}
     .works-slider__link 
-      a(:href="currentWork.link").iconed-link Посмотреть сайт
+      a(:href="currentWork.link").iconed-link
+        span.iconed-link__text Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
   ul.works-slider__tags

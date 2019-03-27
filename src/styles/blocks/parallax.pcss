@@ -6,6 +6,9 @@
     top: 0;
     left: 0;
     right: 0;
+    @include tablets{
+        display: none;
+    }
 }
 
 .parallax__layer{
@@ -54,14 +57,14 @@
         .parallax__image{
             right: 0;
             bottom: 0;
-            transform: scale(1.5);
+            transform: scale(2);
             
         }
     }
     &:nth-child(7){
         .parallax__image{
             left: 0;
-            bottom: -882px;
+            bottom: -1000px;
             transform: scale(2);
         }
     }

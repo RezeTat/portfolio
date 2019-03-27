@@ -4,8 +4,7 @@
 
 .main-section{
     color: #fff; 
-    font-family: Open Sans;
-    color:  #414c63;
+    color: rgba($text-color, 1);
     width: 100%;
     height: 100vh;
     display: flex;
@@ -18,6 +17,9 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+        @include tablets{
+            justify-content: flex-start;
+        }
 }
 
 .header{
@@ -27,23 +29,44 @@
     display: flex;
     padding-top: 50px;
     z-index: 10;
+        @include tablets{
+            padding: 40px;
+        }
     &-roll{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex: 1;
+    white-space: nowrap;
+        @include tablets{
+            justify-content: end;
+        }
+    }
+    &__links{
+        @include tablets{
+            display: flex;
+        }
     }
 }
 
-.nav__list {
-  display: flex;
-  align-items: center;
+.nav__list-header{
+    display: flex;
+    align-items: center;
+        @include tablets{
+            display: none;
+        }
 }
 
 .nav__item {
     margin-right: 60px;
     padding-bottom: 45px;
     border-bottom: 3px solid transparent; 
+        @include tablets{
+            padding-bottom: 10px;
+        }
+        @include phones{
+            margin-right: 49px;
+        }
 
     &:last-child {
         margin-right: 0;
@@ -82,14 +105,21 @@
         color: gold;
         border-bottom: 3px solid gold;
     }
+    @include phones{
+        padding-bottom: 0;
+    }
 }
 
 .user-content{
     display: flex;
     flex-direction: column;
-    z-index: 10;
+    z-index: 9;
     @include desktop{
         flex-direction: row;
+    }
+    @include tablets{
+        flex-direction: column;
+        padding-top: 141px;
     }
 }
 
@@ -98,9 +128,25 @@
     font-weight: 600;
     line-height: 30px;
     text-align: center;
-    @include desktop{
-        padding-right: 60px;
-    }
+    color: rgba($text-color, .4);
+  @include desktop {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 8px;
+    margin-right: 5%;
+  }
+  @include tablets {
+    text-align: center;
+    margin-right: 0;
+  }
+  @include phones {
+    font-size: 14px;
+    padding: 0 10%;
+  }
+}
+    
+.user-content__occ{
+white-space: nowrap;
 }
 
 .user-content__name{
@@ -137,6 +183,9 @@
         .scroll-class{
             fill: gold;
         }
+    }
+    @include tablets{
+        display: none;
     }
 }
 

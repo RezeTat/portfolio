@@ -7,3 +7,4 @@ import "./scripts/skills";
 import "./scripts/parallax";
 import "./scripts/works";
 import "./scripts/reviews";
+import "./scripts/popup";

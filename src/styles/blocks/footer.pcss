@@ -1,22 +1,50 @@
 .footer {
-  padding: 100px 0;
+  padding: 90px 0;
   color: #fff;
   background: #1f232d;
+    @include tablets{
+      padding: 65px 40px;
+    }
 }
 
 .footer__container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+    @include phones{
+      flex-direction: column;
+    }
+}
+
+.nav__list-footer{
+  display: flex;
+  flex-flow: wrap;
+  @include tablets{
+    display: flex;
+  }
 }
 
 .footer__copyright {
   width: 30%;
   display: flex;
+    @include desktop{
+      flex-direction: column;
+      width: 20%
+    }
+    @include phones{
+      width: 100%;
+      padding-bottom: 50px;
+    }
 }
 
 .footer__data {
   width: 60%;
+  @include desktop{
+    width: 70%;
+  }
+  @include phones{
+      width: 100%;
+    }
 }
 
 .footer__menu {
@@ -27,6 +55,9 @@
   font-size: 48px; 
   font-weight: 600;
   line-height: 30px; 
+  @include desktop{
+    padding-bottom: 30px;
+  }
 }
 
 .copyright{
@@ -44,6 +75,10 @@
   font-weight: 700;
   line-height: 30px; 
   text-align: left;
+  text-transform: uppercase;
+  @include desktop{
+    padding-bottom: 34px;
+  }
 }
 
 .copyright__desc{
@@ -55,6 +90,9 @@
 
 .footer__data-columns{
   display: flex;
+    @include tablets{
+      flex-direction: column;
+    }
 
 }
 
@@ -63,4 +101,18 @@
   font-weight: 400;
   line-height: 30px;
   padding: 30px 60px 30px 0; 
+    @include tablets{
+      padding: 15px 60px 15px 0; 
+    }
+}
+
+.footer__text-author{
+  font-size: 16px;
+  font-style: italic;
+  line-height: 30px;
+  padding-top: 35px;
+}
+
+.footer__text-text{
+  padding-bottom: 35px;
 }

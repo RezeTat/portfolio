@@ -1,8 +1,5 @@
 .aboutme-section{
     position: relative;
-    padding-left: 20%;
-    padding-right: 20%;
-    height: 40%;
     min-height: 650px;
     justify-content: center;
     align-items: center;
@@ -14,31 +11,47 @@
     height: auto;
     border-radius: 50%;
     margin-bottom: 60px;
-}
-
-.city__left{
-    font-size: 16px;
-    font-weight: 300;
-}
-
-.city__right{
-    font-size: 16px;
-    font-weight: 600;
+        @include phones{
+            width: 170px;
+        }
 }
 
 .information{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    padding-left: 20%;
+    padding-right: 20%;
+    @include desktop {
+    padding-right: 2%;
+    padding-left: 2%;
+    }
+    @include phones {
+        flex-direction: column;
+        padding-top: 114px;
+        padding-bottom: 114px;
+    }
     &__fact{
-        width: 40%;
+        width: 36%;
+        @include phones{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 30px;
+        }
         &-row{
             display: flex;
             justify-content: space-between;
         }
     }
     &__desc{
-        width: 60%;
+        width: 56%;
+        @include phones {
+            width: 100%;
+            margin-bottom: 50px;
+        }
         &-point{
             display: flex;
             flex-direction: column;
@@ -47,12 +60,21 @@
             font-weight: 600;
             line-height: 30px;
             padding-bottom: 30px;
+                @include phones{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 24px;
+                }
         }
             &__name{
                 font-size: 36px;
                 font-weight: 700;
                 line-height: 48px;
                 padding-bottom: 37px;
+                    @include phones{
+                        font-size: 30px;
+                        line-height: 36px;
+                    }
             }
         }
         &-remark{
@@ -65,10 +87,34 @@
                 color: rgba(255, 0, 0, 0.1);
                 margin-left: -26px;
             }
+            @include phones{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 24px;
+            }
         }
     }
 }
 
 .user__data-cell{
     padding-right: 50px;
+}
+
+.user__data-title{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: rgba($text-color, .3);
+        @include phones{
+            font-size: 14px;
+        }
+}
+
+.user__data-content{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+        @include phones{
+            font-size: 14px;
+        }
 }
