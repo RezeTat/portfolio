@@ -4,6 +4,9 @@
     justify-content: center;
     align-items: center;
     display: flex;
+        @include tablets{
+            margin-top: -25%;
+        }
 }
 
 .my-foto{
@@ -11,6 +14,7 @@
     height: auto;
     border-radius: 50%;
     margin-bottom: 60px;
+    margin-left: 21%;
         @include phones{
             width: 170px;
         }
@@ -20,7 +24,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding-left: 20%;
+    padding-left: 14%;
     padding-right: 20%;
     @include desktop {
     padding-right: 2%;
@@ -105,6 +109,7 @@
     font-weight: 400;
     line-height: 30px;
     color: rgba($text-color, .3);
+    padding-right: 89px;
         @include phones{
             font-size: 14px;
         }

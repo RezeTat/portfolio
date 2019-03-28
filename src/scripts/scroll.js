@@ -18,19 +18,5 @@ Vue.use(VueScrollTo, {
 });
 
 new Vue({
-  el: '#header-scroll',
-  methods: {
-  }
-});
-
-new Vue({
-  el: '#footer-scroll',
-  methods: {
-  }
-});
-
-new Vue({
-  el: '#arrow-scroll',
-  methods: {
-  }
+  el: '#app',
 });

@@ -38,7 +38,7 @@ html(lang="en")
                           - var menu = [['Главная','#home'], ['Обо мне', '#about'], ['Навыки','#skills'] , ['Работы','#works'] , ['Отзывы','#reviews'], ['Связаться','#contacts']];
                           each item in menu
                             li.nav__item
-                              a(href=`${item[1]}`).nav__link #{item[0]}
+                              a(href=`${item[1]}` v-scroll-to="'${item[1]}'").nav__link #{item[0]}
                       a.popup__close(href="#")
                           +icon('remove','popup__close-svg')
                     .header__links
@@ -186,7 +186,7 @@ html(lang="en")
             .container
               h2.contact-section__title Связаться со мной
               form.form
-                .myForm__part
+                .form__part
                   .form-row
                     label.form-block(for='')
                       span.form-name__label Введите ваше имя
@@ -198,14 +198,14 @@ html(lang="en")
                       .conteiner__label
                         +icon('envelope', 'form-class')
                         input.form__input(name='email', type='email', placeholder='loftschool@study.com',required)
-                .myForm__part
+                .form__part
                   .form-row
                     label.form-block(for='')
                       span.form-name__label Сообщение к письму
                       .conteiner__label
                         +icon('message', 'form-class')
                         textarea.form__input.form__input-textarea(name='comment',required, 
-                        placeholder='Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса')
+                        placeholder='Требуется ваша помощь в создании сайта.  Интересуют сроки и цена вопроса')
                 button.form__btn Отправить
         footer.footer
           .container.footer__container
@@ -221,7 +221,7 @@ html(lang="en")
                   ul.nav__list.nav__list-footer#footer-scroll
                     each item in menu
                       li.nav__item
-                        a(href=`${item[1]}`).nav__link #{item[0]}
+                        a(href=`${item[1]}` v-scroll-to="'${item[1]}'").nav__link #{item[0]}
               .footer__data-columns
                 .footer__data-col
                   article.footer__text
