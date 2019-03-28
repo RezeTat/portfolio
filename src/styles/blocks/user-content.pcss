@@ -1,0 +1,45 @@
+.user-content{
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+    @include desktop{
+        flex-direction: row;
+    }
+    @include tablets{
+        flex-direction: column;
+        padding-top: 141px;
+    }
+}
+
+.user-content__desc{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    color: rgba($text-color, .4);
+    white-space: wrap;
+  @include desktop {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 8px;
+    margin-right: 1%;
+  }
+  @include tablets {
+    text-align: center;
+    margin-right: 0;
+  }
+  @include phones {
+    font-size: 14px;
+    padding: 0 10%;
+  }
+}
+    
+.user-content__occ{
+white-space: nowrap;
+}
+
+.user-content__name{
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 60px;
+    text-align: center;
+}

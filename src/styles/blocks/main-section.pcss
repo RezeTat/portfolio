@@ -1,5 +1,6 @@
 .main-content{
     height:100%;
+    color: $text-color;
 }
 
 .main-section{
@@ -35,9 +36,9 @@
     &-roll{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex: 1;
+    justify-content: space-between;
     white-space: nowrap;
+    width: 100%;
         @include tablets{
             justify-content: end;
         }
@@ -54,6 +55,7 @@
     align-items: center;
         @include tablets{
             display: none;
+            align-items: flex-start;
         }
 }
 
@@ -61,9 +63,12 @@
     margin-right: 60px;
     padding-bottom: 45px;
     border-bottom: 3px solid transparent; 
+        @include desktop-min{
+            margin-right: 30px;
+        }
         @include tablets{
             padding-bottom: 10px;
-            padding-right: 40px;
+           margin-right: 30px;
         }
 
     &:last-child {
@@ -103,56 +108,12 @@
         color: gold;
         border-bottom: 3px solid gold;
     }
-    @include phones{
+    @include tablets{
         padding-bottom: 0;
     }
 }
 
-.user-content{
-    display: flex;
-    flex-direction: column;
-    z-index: 9;
-    @include desktop{
-        flex-direction: row;
-    }
-    @include tablets{
-        flex-direction: column;
-        padding-top: 141px;
-    }
-}
 
-.user-content__desc{
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 30px;
-    text-align: center;
-    color: rgba($text-color, .4);
-  @include desktop {
-    text-align: right;
-    margin-bottom: 0;
-    padding-top: 8px;
-    margin-right: 5%;
-  }
-  @include tablets {
-    text-align: center;
-    margin-right: 0;
-  }
-  @include phones {
-    font-size: 14px;
-    padding: 0 10%;
-  }
-}
-    
-.user-content__occ{
-white-space: nowrap;
-}
-
-.user-content__name{
-    font-size: 72px;
-    font-weight: 700;
-    line-height: 60px;
-    text-align: center;
-}
 
 .main-button{
     display: flex;
