@@ -1,0 +1,152 @@
+.about__page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: url(../images/content/admin_png.png) center center / cover no-repeat;
+}
+
+.about__page-title {
+    display: flex;
+    padding: 0 0 60px 60px;
+}
+
+.about__page-add__new{
+    padding-left: 60px;
+    background: transparent;
+    color: #383bcf;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 34px;
+    &::before{
+        color: #fff;
+        content: "+";
+        font-size: 15px;
+        font-weight: 400;
+        border-radius: 50%;
+        margin-right: 13px;
+        padding: 0 6px;
+        background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    }
+}
+
+.about__page-title__title{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.skills{
+    padding-top: 30px;
+}
+
+.skills__row{
+    min-height: 100%;
+    display: grid;
+    grid-template-rows:1fr;
+    grid-template-columns: 60% 15% 25%;
+    grid-template-areas: 
+    "skills"
+    "percent" 
+    "buttons" ;
+    justify-items: start;
+}
+
+.skills__name{
+    grid-area: skills;
+}
+
+.skills__percent{
+    grid-area: percent;
+    grid-column: 2/3;
+}
+
+.skills__buttons{
+    grid-area: buttons;
+    grid-column: 3/4;
+    display: flex;
+}
+
+.skills__new{
+    padding: 70px 0 20px 90px;
+}
+
+.skills__new-add{
+    background: transparent;
+    &::before{
+        content: "+";
+        font-size: 30px;
+        font-weight: 400;
+        border-radius: 50%;
+        margin-right: 13px;
+        padding: 0 13px;
+        background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+}
+}
+
+
+.skills-list__item{
+    width: 45%;
+    background: #fff;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+}
+
+.skills__card-title__input{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(#1f232d, 0.15);
+    padding-bottom: 30px;
+}
+
+.skills__card-title__text{
+    border: none;
+    border-bottom:1px solid #000;
+    padding-bottom: 15px
+}
+
+.skills__card-title__buttons{
+    display: flex;
+}
+
+.elem__percent{
+    border: none;
+    border-bottom:1px solid #000;
+    width: 20%;
+    padding-bottom: 15px;
+}
+
+.elem__new{
+    border: none;
+    border-bottom:1px solid #000;
+    width: 55%;
+    margin-right: 15px;
+    padding-bottom: 15px;
+}
+
+.is-pencil{
+    background:svg-load('pencill.svg', fill=#414c63) center center no-repeat; 
+    width: 16px;
+    height: 15px;
+}
+
+.is-trash{
+    background:svg-load('trash.svg', fill=#414c63) center center no-repeat;
+    width: 13px;
+    height: 15px;
+}
+
+.is-tick{
+    background:svg-load('tick.svg', fill=#00d70a) center center no-repeat;
+    width: 15px;
+    height: 12px;
+}
+
+
+.is-cross{
+    background:svg-load('cross.svg', fill=#bf2929) center center no-repeat;
+    width: 14px;
+    height: 12px;
+}

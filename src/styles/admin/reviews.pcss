@@ -1,0 +1,176 @@
+.reviews{
+    color: $text-color;
+    width: 100%;
+    height: 100%;
+    background: url(../images/content/admin_png.png) center center / cover no-repeat;
+}
+
+.reviews__title{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 34px;
+    padding-bottom: 60px;
+}
+
+.reviews__new-title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 34px;
+    border-bottom: 1px solid rgba(#1f232d,.15);
+    padding:30px;
+}
+
+.reviews__new{
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+}
+
+.reviews__new-content__left{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews__new-content__right{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add__new-foto{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #dee4ed;
+    border-radius: 50%;
+    &::after{
+        position: absolute;
+        background: svg-load('user.svg', fill=red) center center no-repeat;
+        width: 85px;
+        height: 113px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.reviews__user{
+    display: flex;
+}
+
+.reviews__new-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 60px;
+}
+
+.add__new-foto__text{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 33.89px;
+    color: #383bcf;
+    padding: 30px;
+}
+
+.form-block-reviews{
+    width: 38%;
+}
+
+.form-block__textarea-reviews{
+    width: 80%;
+}
+
+
+.reviews__all-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.reviews__all-list__item{
+    width: 30%;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    margin: 30px 30px 30px 0;
+}
+
+.user__info{
+    display: flex;
+    padding: 30px;
+    border-bottom: 1px solid rgba(#1f232d,.15)
+}
+
+.user__avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: url(../images/content/Kovalchuk.jpg) center center / cover no-repeat;
+}
+
+.user__name-name{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.user__name-job{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    opacity: 0.5;
+}
+
+.reviews__desc{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    opacity: 0.7;
+    padding: 30px 50px 85px 30px;
+}
+
+.reviews__all-add__btn {
+    position: relative;
+    background-color: #ffffff;
+    padding: 66% 50%;
+    background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    &::before{
+        position: absolute;
+        content: "+";
+        font-size: 72px;
+        font-weight: 300;
+        line-height: 30px;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        width: 150px;
+        height: 150px;
+        border: 2px solid #ffffff;
+        background: transparent;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+}
+
+.reviews__all-add__title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 80%;
+}
+
+.item__button{
+    position: relative;
+}
