@@ -1,0 +1,71 @@
+.header{
+    width: 100%;
+    background-color: #3e3e59;
+    color: #fff;
+    padding: 15px 60px;
+}
+
+.user__pic-avatar{
+    width:45px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.user{
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+    @include phones{
+        width: 77%;
+    }
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    @include phones{
+        flex-direction: column;
+    }
+}
+
+.user__name{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+.header__title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+    opacity: 0.5;
+    @include phones{
+        display: none;
+    }
+}
+
+.exit__btn{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: underline;
+    opacity: 0.7;
+    @include phones{
+        position: absolute;
+        top: 50%;
+        left: 30%;
+    }
+}
+
+.header-info{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+        @include tablets{
+            width: 60%;
+        }
+        @include phones{
+            width: 100%;
+        }
+}

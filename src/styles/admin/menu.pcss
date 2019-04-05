@@ -1,0 +1,26 @@
+.tabs{
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 36px;
+    color: $text-color;
+    padding: 32px  30px 30px 80px;
+    @include phones{
+        padding-right: 0;
+        padding-left: 0;
+    }
+       
+}
+
+.tabs__item{
+    margin-right: 60px;
+    padding-bottom: 30px;
+
+    &:last-child{
+        margin-right: 0;
+    }
+     &:hover{
+            color: #383bcf;
+            border-bottom: 2px solid #383bcf;
+        }
+}

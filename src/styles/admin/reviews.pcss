@@ -1,0 +1,258 @@
+.reviews{
+    color: $text-color;
+    width: 100%;
+    height: 100%;
+    background: url(../images/content/admin_png.png) center center / cover no-repeat;
+}
+
+.reviews__title{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 34px;
+    padding-bottom: 47px;
+    padding-left: 30px;
+    @include phones{
+        padding-left: 0;
+    }
+}
+
+.reviews__new-title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 34px;
+    border-bottom: 1px solid rgba(#1f232d,.15);
+    padding:30px 30px 30px 60px;
+    @include phones{
+        padding-left: 15px;
+    }
+}
+
+.reviews__new{
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    @include phones{
+        margin-left: -20px;
+        margin-right: -30px;
+    }
+}
+
+.reviews__new-content__left{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include phones{
+        width: 100%;
+        align-items: center;
+    }
+}
+
+.reviews__new-content__right{
+    width: 77%;
+    display: flex;
+    flex-direction: column;
+    @include tablets{
+        padding-left: 30px;
+    }
+     @include phones{
+        width: 100%;
+    }
+}
+
+.add__new-foto{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #dee4ed;
+    border-radius: 50%;
+    &::after{
+        content: "";
+        position: absolute;
+        background: svg-load('user.svg', fill=#fff) center center no-repeat;
+        width: 85px;
+        height: 113px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-size: contain;
+    }
+}
+
+.reviews__user{
+    display: flex;
+    @include tablets{
+        flex-direction: column;
+    }
+}
+
+.reviews__new-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 34px 60px;
+    @include phones{
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: column;
+    }
+}
+
+.add__new-foto__text{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 33.89px;
+    color: #383bcf;
+    padding: 30px;
+}
+
+.form-block-reviews{
+    width: 38%;
+    @include phones{
+        width: 87%;
+    }
+}
+
+.form-block__textarea-reviews{
+    width: 80%;
+}
+
+.reviews__new-buttons{
+    justify-content: center;
+    margin-left: 14%;
+    @include phones{
+        margin-left: 0;
+    }
+}
+
+.reviews__all-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    @include phones{
+        margin-left: -20px;
+        margin-right: -30px;
+    }
+}
+
+.reviews__all-list__item{
+    width: 30%;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    margin: 30px 30px 30px 0;
+    height: 100%;
+    @include tablets{
+        width: 45%;
+    }
+    @include phones{
+        width: 100%;
+        margin-right: 0;
+        min-height: 100px;
+        margin-bottom: 10px;
+}
+}
+
+.user__info{
+    display: flex;
+    padding: 18px;
+    border-bottom: 1px solid rgba(#1f232d,.15)
+}
+
+.user__avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: url(../images/content/Kovalchuk.jpg) center center / cover no-repeat;
+}
+
+.user__name-name{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 48px;
+}
+
+.user__name-job{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    opacity: 0.5;
+}
+
+.reviews__desc{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    opacity: 0.7;
+    padding: 30px 50px 85px 30px;
+}
+
+.reviews__all-add{
+    padding-left: 30px;
+    @include phones{
+        padding-left: 0;
+    }
+}
+
+.reviews__all-add__btn {
+    position: relative;
+    background-color: #ffffff;
+    padding: 200px 50%;
+    background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    &::before{
+        position: absolute;
+        content: "+";
+        font-size: 72px;
+        font-weight: 300;
+        line-height: 30px;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+         @include phones{
+            font-size: 24px;
+            left: 25%;
+        }
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        width: 150px;
+        height: 150px;
+        border: 2px solid #ffffff;
+        background: transparent;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include phones{
+            width: 50px;
+            height: 50px;
+            left: 25%;
+        }
+    }
+    @include phones{
+        padding: 100px 50%;
+    }
+}
+
+.reviews__all-add__title{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    @include phones{
+        top: 50%;
+        left: 60%;
+    }
+}
+
+.item__button{
+    position: relative;
+}
+
+.reviews__all-buttons{
+    padding-bottom: 27px;
+}

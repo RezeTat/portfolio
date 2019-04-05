@@ -1,0 +1,219 @@
+.about__page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: url(../images/content/admin_png.png) center center / cover no-repeat;
+}
+
+.about__page-title {
+    display: flex;
+    padding: 0 0 20px 30px;
+    @include phones{
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+.about__page-add__new{
+    padding-left: 60px;
+    background: transparent;
+    color: #383bcf;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 34px;
+    &::before{
+        color: #fff;
+        content: "+";
+        font-size: 15px;
+        font-weight: 400;
+        border-radius: 50%;
+        margin-right: 13px;
+        padding: 0 6px;
+        background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    }
+    @include phones{
+        padding-left: 0;
+        text-align: left;
+    }
+}
+
+.about__page-title__title{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 34px;
+}
+
+.skills{
+    padding-top: 10px;
+    width: 100%;
+    @include phones{
+        padding-left: 15px;
+    }
+}
+
+.skills__row{
+    min-height: 100%;
+    display: table;
+    width: 100%;
+    padding: 8px 0;
+}
+
+.skills__name{
+    width: 67%;
+    @include tablets{
+        width: 53%;
+    }
+}
+
+.skills__percent{
+    width: 15%;
+}
+
+.skills__buttons{
+    width: 18%;
+    display: flex;
+    padding-left: 35px;
+}
+
+.skills__new{
+    padding: 40px 0 20px 90px;
+    @include tablets{
+        padding-left: 0;
+    }
+    @include phones{
+        padding-left: 15px;
+    }
+}
+
+.skills__new-add{
+    background: transparent;
+    padding-left: 20px;
+    &::before{
+        content: "+";
+        font-size: 30px;
+        font-weight: 400;
+        border-radius: 50%;
+        margin-right: 13px;
+        padding: 0 13px;
+        color: #fff;
+        background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+}
+}
+
+.skills-list{
+    display: flex;
+    flex-wrap: wrap;
+    @include phones{
+        margin-right: -30px;
+        margin-left: -20px;
+    }
+}
+
+.skills-list__item{
+    width: 44%;
+    background: #fff;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    padding: 20px 5px 20px 30px;
+    margin: 25px;
+        @include tablets{
+            &:first-child{
+            display: none;
+        }
+    }
+    @include phones{
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+.skills__card-title__input{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(#1f232d, 0.15);
+    padding-bottom: 15px;
+}
+
+.skills__card-title__text{
+    border: none;
+    border-bottom:1px solid #000;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    @include phones{
+        padding-left: 15px;
+        border-bottom: none;
+    }
+}
+
+.skills__card-title__buttons{
+    display: flex;
+}
+
+.skills__card-title__btn{
+    margin-right: 20px;
+}
+
+.elem__percent{
+    border: none;
+    border-bottom:1px solid #000;
+    width: 20%;
+    padding-bottom: 15px;
+}
+
+.elem__new{
+    border: none;
+    border-bottom:1px solid #000;
+    width: 55%;
+    margin-right: 15px;
+    padding-bottom: 15px;
+    @include tablets{
+        width: 49%;
+    }
+}
+
+.is-pencil{
+    background:svg-load('pencil.svg', fill=#414c63) center center no-repeat; 
+    width: 16px;
+    height: 15px;
+    background-size: contain;
+    margin-right: 15px;
+}
+
+.is-trash{
+    background:svg-load('trash.svg', fill=#414c63) center center no-repeat;
+    width: 13px;
+    height: 15px;
+    background-size: contain;
+}
+
+.is-tick{
+    background:svg-load('tick.svg', fill=#00d70a) center center no-repeat;
+    width: 15px;
+    height: 12px;
+    background-size: contain;
+}
+
+
+.is-cross{
+    background:svg-load('remove.svg', fill=#bf2929) center center no-repeat;
+    width: 14px;
+    height: 12px;
+    background-size: contain;
+}
+
+.form__input__new{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 34px;
+    opacity: 0.5;
+}
+
+.input__new-add{
+    padding-top: 190px;
+    display: flex;
+}

@@ -1,10 +1,6 @@
-const parallax = document.querySelector('.parallax');
-const layers = parallax.children;
+const parallax = document.querySelectorAll('.parallax')[0];
 
-if (window.innerWidth >=768){
-    console.log(window.innerWidth);
-
-function moveLayersDependsOnScroll(wScroll){
+function moveLayersDependsOnScroll(wScroll,layers){
 
     Array.from(layers).forEach(layer=>{
 
@@ -15,9 +11,28 @@ function moveLayersDependsOnScroll(wScroll){
     });
 }
 
+const windowWidth = document.body.clientWidth;
+
+if (windowWidth>767){
+
 window.addEventListener('scroll', e=>{
     const wScroll = window.pageYOffset;
-    moveLayersDependsOnScroll(wScroll);
 
+    Array.from(parallax).forEach(paral=>{
+        moveLayersDependsOnScroll(wScroll,paral.children);
+    });
+
+    const rect = parallax.getBoundingClientRect();
+    parallax.innerHTML = "ширина = " + rect.width + "<br>";
+    parallax.innerHTML += "высота = " + rect.height + "<br>";
+    parallax.innerHTML += "сверху = " + rect.top + "<br>";
+    parallax.innerHTML += "слева = "  + rect.left + "<br>";
+    console.log(rect);
+    
+    if(wScroll>=2700){
+
+    }
+    
 });
+
 }
