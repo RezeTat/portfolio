@@ -15,11 +15,18 @@
     display: flex;
     justify-content: space-between;
     width: 48%;
+    @include phones{
+        width: 77%;
+    }
 }
 
 .header-container{
     display: flex;
     justify-content: space-between;
+    position: relative;
+    @include phones{
+        flex-direction: column;
+    }
 }
 
 .user__name{
@@ -33,6 +40,9 @@
     font-weight: 400;
     line-height: 34px;
     opacity: 0.5;
+    @include phones{
+        display: none;
+    }
 }
 
 .exit__btn{
@@ -41,10 +51,21 @@
     line-height: 24px;
     text-decoration: underline;
     opacity: 0.7;
+    @include phones{
+        position: absolute;
+        top: 50%;
+        left: 30%;
+    }
 }
 
 .header-info{
     display: flex;
     justify-content: space-between;
     width: 40%;
+        @include tablets{
+            width: 60%;
+        }
+        @include phones{
+            width: 100%;
+        }
 }

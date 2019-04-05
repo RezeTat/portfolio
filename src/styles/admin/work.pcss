@@ -8,7 +8,13 @@
 .work__new{
     box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
     background-color: #ffffff;
-    padding-bottom: 20px;
+    padding: 75px 0 20px 55px;
+    @include phones{
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: -20px;
+        margin-right: -30px;
+    }
 }
 
 .work__page-title{
@@ -16,6 +22,10 @@
     font-weight: 700;
     line-height: 34px;
     padding-top: 60px;
+    padding-left: 25px;
+    @include phones{
+        padding-left: 0;
+    }
 }
 
 .work__new-title{
@@ -23,12 +33,18 @@
     font-weight: 700;
     line-height: 34px;
     border-bottom: 1px solid rgba(#1f232d, .15);
-    padding-top: 90px;
+    padding-bottom: 20px;
+    @include phones{
+        padding-left: 15px;
+    }
 }
 
 .work__new-content{
     display: flex;
-    margin-top: 75px;
+    margin-top: 50px;
+    @include tablets{
+        flex-direction: column;
+    }
 }
 
 .work__new-ipg{
@@ -39,14 +55,27 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @include tablets{
+        display: none;
+    }
 }
 
 .work__new-content__left, .work__new-content__right{
     width: 45%;
+    @include tablets{
+        width: 100%;
+    }
 }
 
 .work__new-content__left{
     margin-right: 5%;
+}
+
+.work__new-content__right{
+    padding: 0 86px 0 76px;
+    @include phones{
+        padding: 0 15px 0 15px;
+    }
 }
 
 .work__new-ipg__add{
@@ -72,7 +101,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .form-block__name{
@@ -102,21 +131,28 @@
     background-color: #f4f4f4;
     padding: 8px 19px;
     font-size: 13px;
-    line-height: 41.86px;
     color: $text-color, .7;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .work__new-tag__delete{
-    background:svg-load('cross.svg', fill=#414c63) center center no-repeat; 
+    background:svg-load('remove.svg', fill=#414c63) center center no-repeat; 
     width: 11px;
     height: 11px;
     margin-left: 10px;
+    background-size: contain;
 }
 
 .work__new-buttons{
     display: flex;
     justify-content: flex-end;
+    padding-top: 40px;
+    @include tablets{
+        justify-content: center;
+    }
 
 }
 
@@ -132,35 +168,57 @@
 .work__new-buttons__save{
     color: #fff;
     font-size: 16px;
-    line-height: 48px;
     text-transform: uppercase;
     border-radius: 30px;
     margin-right: 30px;
-    padding: 10px 40px;
+    padding: 14px 37px;
     background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
 }
 .work__all{
-  margin: 60px 0;
+  padding: 60px 25px;
+  @include phones{
+      padding-left: 0;
+      padding-right: 0;
+  }
 }
 
 .work__all-list{
     display: flex;
     flex-wrap: wrap;
+    @include phones{
+        margin-left: -20px;
+        margin-right: -30px;
+    }
 }
 
-
-
 .work__all-item{
-    width: 31%;
+    width: 30%;
     height: auto;
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+    margin-right: 30px;
+    margin-bottom: 65px;
+    min-height: 560px;
+    @include tablets{
+        width: 43%;
+        margin-right: 50px;
+        min-height: 600px;
+        height: 100%;
+    }
+    @include phones{
+        width: 100%;
+        margin-right: 0;
+        min-height: 100px;
+        margin-bottom: 10px;
+    }
 }
 
 .work__all-add{
     position: relative;
-    margin-right: 1%;
-    padding: 74% 30%;
+    padding: 300px 30%;
+    height: 100%;
     background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
     &::before{
         position: absolute;
@@ -171,7 +229,11 @@
         color: #fff;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%)
+        transform: translate(-50%, -50%);
+        @include phones{
+            font-size: 24px;
+            left: 25%;
+        }
     }
     &::after{
         position: absolute;
@@ -183,7 +245,15 @@
         border-radius: 50%;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%)
+        transform: translate(-50%, -50%);
+        @include phones{
+            width: 50px;
+            height: 50px;
+            left: 25%;
+        }
+    }
+    @include phones{
+        padding: 100px 30%;
     }
 }
 
@@ -194,21 +264,21 @@
     line-height: 30px;
     color: #fff;
     bottom: 25%;
-    left: 30%;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include phones{
+        top: 50%;
+        left: 60%;
+    }
 }
 
 .work__all-img{
     width:100%;
-    height:100%;
+    min-height:147px;
+
 }
 
-.work__all-item{
-    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
-    background-color: #ffffff;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    min-height: 560px;
-}
 
 .work__all-images{
     background: url(../images/content/slider 1.jpg) center center / cover no-repeat;
@@ -237,7 +307,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 30px;
-    padding: 30px 30px 100px 30px;
+    padding: 30px 30px 45px 30px;
 }
 
 .work__all-buttons{
@@ -251,11 +321,18 @@
     font-weight: 400;
     line-height: 30px;
     color: $text-color, .5;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &::after{
-    background:svg-load('pencil.svg', fill=#383bcf) center center no-repeat; 
-    width: 17px;
-    height: 17px;
-    margin-right: 15px;
+        content: "";
+        background:svg-load('pencil.svg', fill=#383bcf) center center no-repeat; 
+        width: 17px;
+        height: 17px;
+        padding-right: 15px;
+        background-size: contain;
+        margin-left: 11px;
 }
 }
 
@@ -264,11 +341,48 @@
     font-weight: 400;
     line-height: 30px;
     color: $text-color, .5;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &::after{
-        background:svg-load('cross.svg', fill=#c92e2e) center center no-repeat; 
+        content: "";
+        background:svg-load('remove.svg', fill=#c92e2e) center center no-repeat; 
         width: 15px;
         height: 15px;
-        margin-right: 15px;
+        padding-right: 15px;
+        background-size: contain;
+        margin-left: 11px;
 }
 }
 
+.work__new-ipg__tablets{
+    display: none;
+    @include tablets{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100%;
+        padding: 0 126px 30px 84px;
+    }
+    @include phones{
+        padding: 0 20px 30px 20px;
+    }
+}
+
+.work__new-img__tab{
+    @include tablets{
+        width: 100%;
+        height: 300px;
+        background: url(../images/content/slider 1.jpg) center center / cover no-repeat;
+    }
+    @include phones{
+        height: 150px;
+    }
+}
+
+.work__new-ipg__tablets-add{
+    @include tablets{
+        padding-top: 30px;
+    }
+}
