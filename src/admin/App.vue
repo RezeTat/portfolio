@@ -29,58 +29,62 @@
           .container
             ul.skills-list
               li.skills-list__item
-                .skills__card-title__input
-                  admin-input(
-                      type="text"
-                      placeholder="Название новой группы"
-                      v-model="todo.name"
-                      :errorText="validation.firstError('todo.name')"
-                      @keydown.enter="addNewTodo"
-                    )
-                  .skills__card-title__buttons
-                    .skills__card-title__btn
-                      button.btn.is-tick.
-                    .skills__card-title__btn
-                      button.btn.is-cross.
-                .card__content
-                  .skill-list__table
-                    .skills__table-container
-                      table.skills
-                          tr.skills__row
-                            td.skills__name 
-                            td.skills__percent 
-                            td.skills__buttons
-                          tr.skills__row
-                            td.skills__name 
-                            td.skills__percent 
-                            td.skills__buttons
-                          tr.skills__row
-                            td.skills__name 
-                            td.skills__percent 
-                            td.skills__buttons
-                          tr.skills__row
-                            td.skills__name 
-                            td.skills__percent 
-                            td.skills__buttons
-                    .skills__new.input__new-add
-                      admin-input(
-                        type="text"
-                        placeholder="Новый навык"
-                        v-model="todo.name"
-                        :errorText="validation.firstError('todo.name')"
+                form.form__new(@submit.prevent="admin")
+                  .skills__card-title__input
+                    admin-input(
+                        type="tytle"
+                        placeholder="Название новой группы"
+                        v-model="todo.title"
+                        :errorText="validation.firstError('todo.title')"
                         @keydown.enter="addNewTodo"
+                        icon="title"
                       )
-                      admin-input(
-                        type="text"
-                        placeholder="100%"
-                        v-model="todo.name"
-                        :errorText="validation.firstError('todo.name')"
-                        @keydown.enter="addNewTodo"
-                      )
-                      button.skills__new-add(
-                        type="submit"
-                        :disabled="disableSubmit"
-                      )
+                    .skills__card-title__buttons
+                      .skills__card-title__btn
+                        button.btn.is-tick.
+                      .skills__card-title__btn
+                        button.btn.is-cross.
+                  .card__content
+                    .skill-list__table
+                      .skills__table-container
+                        table.skills
+                            tr.skills__row
+                              td.skills__name 
+                              td.skills__percent 
+                              td.skills__buttons
+                            tr.skills__row
+                              td.skills__name 
+                              td.skills__percent 
+                              td.skills__buttons
+                            tr.skills__row
+                              td.skills__name 
+                              td.skills__percent 
+                              td.skills__buttons
+                            tr.skills__row
+                              td.skills__name 
+                              td.skills__percent 
+                              td.skills__buttons
+                      .skills__new.input__new-add
+                        admin-input(
+                          type="text"
+                          placeholder="Новый навык"
+                          v-model="todo.text"
+                          :errorText="validation.firstError('todo.text')"
+                          @keydown.enter="addNewTodo"
+                          icon="text"
+                        )
+                        admin-input(
+                          type="numer"
+                          placeholder="100%"
+                          v-model="todo.percent"
+                          :errorText="validation.firstError('todo.percent')"
+                          @keydown.enter="addNewTodo"
+                          icon="percent"
+                        )
+                        button.skills__new-add(
+                          type="submit"
+                          :disabled="disableSubmit"
+                        )
               li.skills-list__item
                 .skills__card-title__input
                   .skills__card-title__text Workflow
@@ -366,7 +370,13 @@ export default {
     "user.password": value => {
       return Validator.value(value).required("Введите пароль");
     },
-    "todo.name":(value) =>{
+    "todo.title":(value) =>{
+      return Validator.value(value).required("Поле не может быть пустым");
+    },
+    "todo.text":(value) =>{
+      return Validator.value(value).required("Поле не может быть пустым");
+    },
+    "todo.percent":(value) =>{
       return Validator.value(value).required("Поле не может быть пустым");
     },
   },
@@ -378,7 +388,9 @@ export default {
         password: ""
       },
       todo: {
-        name: "",
+        title: "",
+        text:"",
+        percent:""
       },
     };
   },
@@ -396,7 +408,25 @@ export default {
           .post("//jsonplaceholder.typicode.com/posts", {
             name: this.user.name,
             password: this.user.password,
-            text: this.todo.name,
+          })
+          .then(response => {
+            const report = JSON.stringify(response, null, 2);
+            console.log(report);
+          });
+      } catch (error) {
+        console.log(error);
+      };
+    },
+    async admin() {
+      if ((await this.$validate()) === false) return;
+      this.disableSubmit = true;
+
+      try {
+        axios
+          .post("//jsonplaceholder.typicode.com/posts", {
+            title: this.todo.title,
+            text:this.todo.text,
+            percent:this.todo.percent
           })
           .then(response => {
             const report = JSON.stringify(response, null, 2);
