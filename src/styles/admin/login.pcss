@@ -3,7 +3,6 @@
 }
 
 .header-container {
-  background: linear-gradient(to right, #3e3e59, #454573);
   padding: 15px 0;
 
   @include phones {
@@ -34,7 +33,7 @@
   font-weight: bold;
 }
 
-/* .tooltips-container {
+.tooltips-container {
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -46,7 +45,7 @@
     transform: translate(-50%, 0%);
     visibility: visible;
   }
-} */
+}
 
 button {
   background: transparent;
@@ -55,25 +54,25 @@ button {
 /* Форма логина */
  @import "../../../styles/mixins.pcss";
 .login {
-  /* position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; */
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background: url("../images/content/admin_png.png") center center / cover no-repeat;
 
   &:before {
-    /* content: "";
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     opacity: 0.5;
-    background: $text-color; */
+    background: $text-color;
   }
 }
 
