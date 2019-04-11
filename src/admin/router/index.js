@@ -6,7 +6,7 @@ import store from "@/store"
 
 Vue.use(VueRouter);
 
-const baseURL = "http://localhost:8000";
+const baseURL = "https://webdev-api.loftschool.com/";
 const guard = axios.create({ baseURL });
 
 const router = new VueRouter({ routes });

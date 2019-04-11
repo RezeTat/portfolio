@@ -27,86 +27,119 @@
 
 </template>                          
 
- <script>
-import { Validator } from "simple-vue-validator";
+
+<script>
 import $axios from "@/requests";
-let uniqId = 0;
 export default {
-  mixins: [require("simple-vue-validator").mixin],
-  validators: {
-    "user.name": value => {
-      return Validator.value(value).required("Введите имя пользователя");
-    },
-    "user.password": value => {
-      return Validator.value(value).required("Введите пароль");
-    },
-    "todo.title":(value) =>{
-      return Validator.value(value).required("Поле не может быть пустым");
-    },
-    "todo.text":(value) =>{
-      return Validator.value(value).required("Поле не может быть пустым");
-    },
-    "todo.percent":(value) =>{
-      return Validator.value(value).required("Поле не может быть пустым");
-    },
+  components: {
+    appInput: () => import("components/input.vue")
   },
   data() {
     return {
-      disableSubmit: false,
       user: {
-        name: "",
-        password: ""
-      },
-      todo: {
-        title: "",
-        text:"",
-        percent:""
-      },
+        name: "admin",
+        password: "admin"
+      }
     };
-  },
-  components: {
-    appInput: () => import("components/input"),
-    adminInput:() => import("components/admin-input")
   },
   methods: {
     async login() {
-      if ((await this.$validate()) === false) return;
-      this.disableSubmit = true;
-
       try {
-        axios
-          .post("//jsonplaceholder.typicode.com/posts", {
-            name: this.user.name,
-            password: this.user.password,
-          })
-          .then(response => {
-            const report = JSON.stringify(response, null, 2);
-            console.log(report);
-          });
-      } catch (error) {
-        console.log(error);
-      };
-    },
-    async admin() {
-      if ((await this.$validate()) === false) return;
-      this.disableSubmit = true;
+        const {
+          data: { token }
+        } = await $axios.post("/login", this.user);
 
-      try {
-        axios
-          .post("//jsonplaceholder.typicode.com/posts", {
-            title: this.todo.title,
-            text:this.todo.text,
-            percent:this.todo.percent
-          })
-          .then(response => {
-            const report = JSON.stringify(response, null, 2);
-            console.log(report);
-          });
+        localStorage.setItem("token", token);
+        $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+        this.$router.replace("/");
       } catch (error) {
-        console.log(error);
-      };
+        //error handling
+      }
     }
   }
 };
-
 </script>
+
+// <script>
+// import { Validator } from "simple-vue-validator";
+// import axios from "axios";
+// let uniqId = 0;
+// export default {
+//   mixins: [require("simple-vue-validator").mixin],
+//   validators: {
+//     "user.name": value => {
+//       return Validator.value(value).required("Введите имя пользователя");
+//     },
+//     "user.password": value => {
+//       return Validator.value(value).required("Введите пароль");
+//     },
+//     "todo.title":(value) =>{
+//       return Validator.value(value).required("Поле не может быть пустым");
+//     },
+//     "todo.text":(value) =>{
+//       return Validator.value(value).required("Поле не может быть пустым");
+//     },
+//     "todo.percent":(value) =>{
+//       return Validator.value(value).required("Поле не может быть пустым");
+//     },
+//   },
+//   data() {
+//     return {
+//       disableSubmit: false,
+//       user: {
+//         name: "reze",
+//         password: "reze"
+//       },
+//       todo: {
+//         title: "",
+//         text:"",
+//         percent:""
+//       },
+//     };
+//   },
+//   components: {
+//     appInput: () => import("components/input"),
+//     adminInput:() => import("components/admin-input")
+//   },
+//   methods: {
+//     async login() {
+//       if ((await this.$validate()) === false) return;
+//       this.disableSubmit = true;
+    
+//       try {
+//         axios
+//           .post("//jsonplaceholder.typicode.com/posts", {
+//             name: this.user.name,
+//             password: this.user.password,
+//           })
+//           .then(response => {
+//             const report = JSON.stringify(response, null, 2);
+//             console.log(report);
+//           });
+//       } catch (error) {
+//         console.log(error);
+//       };
+//     },
+//     async admin() {
+//       if ((await this.$validate()) === false) return;
+//       this.disableSubmit = true;
+
+//       try {
+//         axios
+//           .post("//jsonplaceholder.typicode.com/posts", {
+//             title: this.todo.title,
+//             text:this.todo.text,
+//             percent:this.todo.percent
+//           })
+//           .then(response => {
+//             const report = JSON.stringify(response, null, 2);
+//             console.log(report);
+//           });
+//       } catch (error) {
+//         console.log(error);
+//       };
+//     }
+//   }
+// };
+
+// </script>

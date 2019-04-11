@@ -6,7 +6,7 @@
       section.menu
         tabs
       main.content-container
-        router-view
+      router-view
             
 </template>                          
 
