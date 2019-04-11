@@ -6,7 +6,7 @@
       section.menu
         tabs
       main.content-container
-      router-view
+        router-view
             
 </template>                          
 
@@ -31,7 +31,6 @@ export default {
 @import "../styles/admin/about.pcss";
 @import "../styles/admin/work.pcss";
 @import "../styles/admin/reviews.pcss";
-@import "../styles/admin/login.pcss";
 </style>
 
 
