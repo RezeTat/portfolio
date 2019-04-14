@@ -28,17 +28,21 @@ export default {
         commit("ADD_SKILL", response.data);
         return response;
       } catch (error) {
-        // error handling
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     },
 
     async fetchSkills({ commit }, skill) {
       try {
-        const response = await this.$axios.get("/skills/1", skill);
+        const response = await this.$axios.get("/skills/132", skill);
         commit("SET_SKILLS", response.data);
         return response;
       } catch (error) {
-        // error handling
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     },
 
@@ -58,7 +62,9 @@ export default {
         commit('EDIT_SKILL', response.data.skill);
         return response;
       } catch (error) {
-        // error handling
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
       }
     },
 

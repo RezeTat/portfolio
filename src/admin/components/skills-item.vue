@@ -1,19 +1,20 @@
 <template lang="pug">
-  tr(v-if="editmode === false")
-    td {{skill.title}}
-    td {{skill.percent}}
-    td 
-      button(type="button" @click="removeExistedSkill") удалить
-      button(type="button" @click="editmode = true") изменить
+  tr.skills__row(v-if="editmode === false")
+    td.skills__name {{skill.title}}
+    td.skills__percent {{skill.percent}}%
+    td.skills__buttons
+      button.btn.is-pencil(type="button" @click="editmode = true") 
+      button.btn.is-trash(type="button" @click="removeExistedSkill") 
+      
   
   tr(v-else)
-    td 
+    td
       input(type="text" v-model="editedSkill.title")
-    td 
+    td
       input(type="text" v-model="editedSkill.percent")
     td 
-      button(type="button" @click="save") сохранить
-      button(type="button" @click="editmode = false") отменить
+      button.skills__card-title__btn.is-tick(type="button" @click="save") 
+      button.skills__card-title__btn.is-cross(type="button" @click="editmode = false") 
 
 </template>
 
@@ -41,7 +42,7 @@ export default {
         await this.editSkill(this.editedSkill);
         this.editmode = false;
       } catch (error) {
-        
+        alert('Произошла ошибка при сохранении')
       }
     }
 

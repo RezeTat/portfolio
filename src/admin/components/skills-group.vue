@@ -1,8 +1,12 @@
 <template lang="pug">
   .skill-container
-    h2 {{category.category}}
+    .skills__card-title__text
+      h2 {{category.category}}
+      .skills__card-title__buttons
+        button.skills__card-title__btn.is-tick
+        button.skills__card-title__btn.is-cross(type="button" @click.prevent="deletedSkillGroup")
     hr
-    table
+    table.skills
       skills-item(
         v-for="skill in skills"
         :key="skill.id"
@@ -10,9 +14,9 @@
       )
     hr
     .add-skill-wrapper.blocked
-      input(type="text" v-model="skill.title" placeholder="Добавить скилл")
-      input(type="text" v-model="skill.percent" placeholder="Проценты")
-      button(type="button" @click="addNewSkill") Добавить
+      input.elem__new(type="text" v-model="skill.title" placeholder="Новый навык")
+      input.elem__percent(type="text" v-model="skill.percent" placeholder="100%")
+      button.skills__new-add(type="button" @click="addNewSkill") 
   
 </template>
 
@@ -36,12 +40,12 @@ export default {
     skillsItem: () => import("components/skills-item.vue")
   },
   methods: {
-    ...mapActions('skills', ['addSkill']),
+    ...mapActions('skills', ['addSkill']),   
     async addNewSkill() {
       try {
         await this.addSkill(this.skill);
       } catch (error) {
-        // error 
+        alert('Произошла ошибка при загрузке скиллов') 
       }
     }
   }
