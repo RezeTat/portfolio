@@ -4,7 +4,7 @@
       h2 {{category.category}}
       .skills__card-title__buttons
         button.skills__card-title__btn.is-tick
-        button.skills__card-title__btn.is-cross(type="button" @click.prevent="deletedSkillGroup")
+        button.skills__card-title__btn.is-cross(type="button" @click.prevent="removeExistedCategory")
     hr
     table.skills
       skills-item(
@@ -40,7 +40,13 @@ export default {
     skillsItem: () => import("components/skills-item.vue")
   },
   methods: {
-    ...mapActions('skills', ['addSkill']),   
+    ...mapActions('skills', ['addSkill ']), 
+    ...mapActions("categories", ["removeCategories", "editSkill"]),
+    async removeExistedCategory() {
+      try {
+        await this.removeCategory(this.category.id);
+      } catch (error) {}
+    }, 
     async addNewSkill() {
       try {
         await this.addSkill(this.skill);
