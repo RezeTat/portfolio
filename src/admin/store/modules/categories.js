@@ -4,12 +4,20 @@ export default {
     categories: []
   },
   mutations: {
+    ADD_CATEGORIES: (state, newCategory) => {
+      state.categories.push(newCategory);
+    },
     SET_CATEGORIES: (state, categories) => {
       state.categories = categories;
     },
     REMOVE_CATEGORIES: (state, deletedCategoryId) => {
       state.categories = state.categories.filter(category => category.id !== deletedCategoryId);
     },
+    EDIT_CATEGORIES: (state, editedCategory) => {
+      state.categories = state.categories.map(category =>
+        category.id === editedCategory.id ? editedCategory : category
+      );
+    }
   },
   actions: {
     async addNewSkillGroup({ commit }, groupTitle) {
@@ -44,5 +52,17 @@ export default {
         generateStdError(error);
       }
     },
+    async editCategories({ commit }, category) {
+      try {
+        const response = await this.$axios.post(`/categoris/${category.id}`, category);
+        commit('EDIT_CATEGORIES', response.data.category);
+        return response;
+      } catch (error) {
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
+      }
+    },
+
   }
 };

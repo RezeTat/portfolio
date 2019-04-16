@@ -1,13 +1,14 @@
 const works = {
     namespased: true,
     state:{
-        works:[]
+        works:[],
+        editedWork: {},
     },
     mutations:{
         ADD_WORK: (state, newWork) =>{
             state.works.push(newWork);
         },
-        SET_WORKS:(state, works)=>{
+        SET_CURRENT_WORK:(state, works)=>{
             state.works=works
         },
         REMOVE_WORK: (state, deletedWorkId) =>{
@@ -18,7 +19,7 @@ const works = {
           }
     },
     actions:{
-        async addNewWorks({commit}, work){
+        async addNewWork({commit}, work){
             formData.append('title', work.title);
             formData.append('link', work.link);
             formData.append('desc', work.description);
@@ -37,7 +38,7 @@ const works = {
         async fetchWorks({commit}, work){
             try{
                 const response = await this.$axios.get('/works/132', work)
-                commit('SET_WORKS', response.data)
+                commit('SET_CURRENT_WORK', response.data)
                 return response
             } catch(error){
                 alert('error')

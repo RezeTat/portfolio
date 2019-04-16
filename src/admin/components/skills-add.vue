@@ -1,14 +1,14 @@
 <template lang="pug">
   .skill-container
-    input(type="text" v-model="skillTitle" placeholder="Создать группу").skill-input
-    button(type="button" @click="addSkillGroup") Добавить
+    input(type="text" v-model="skillTitle" placeholder="Название новой группы").skill-input
+    button.skills__card-title__btn.is-tick(type="button" @click="addSkillGroup")
     hr
     br 
     br
     hr
     .add-skill-wrapper.blocked
       input(type="text" placeholder="Добавить скилл")
-      button(type="button") Добавить
+      button.skills__new-add(type="button")
 </template>
 
 <script>

@@ -7,17 +7,13 @@
     .reviews__content(slot="content")
       .reviews__content-text 
         p {{review.text}}
-      .reviews__btns
-        iconedBtn(
-          class="is-pencil"
-          data-text="Править"
-          @click="updateWork"
-        )
-        iconedBtn(
-          class="is-cross"
-          data-text="Удалить"
-          @click="removeExistedReview"
-        )
+      .work__all-buttons
+        button(
+            @click="updateWork"
+          ).btn__correct Править
+        button(
+            @click="removeExistedReview"
+          ).btn__delete Удалить
 
 </template>
 
@@ -28,7 +24,7 @@ export default {
   components: {
     card: () => import("components/card.vue"),
     user: () => import("components/user.vue"),
-    iconedBtn: () => import("components/iconed-btn.vue")
+    // iconedBtn: () => import("components/iconed-btn.vue")
   },
   props: {
     review: Object
@@ -42,7 +38,7 @@ export default {
       this.$emit("updateWork");
     },
     async removeExistedReview() {
-      if (confirm('Удалить отзыв?') === false)
+      if (confirm('Удалить отзыв?') === true)
       try {
         const response = await this.removeReview(this.review.id);
 

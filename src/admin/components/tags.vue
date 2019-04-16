@@ -3,7 +3,7 @@
     template(v-if="interactive")
       li.tags__item.tags__item_interactive(v-for="(tag, index) in tags" :key="tag")
         span {{tag}} 
-        button.tags__remove(@click="$emit('remove', index)")
+        button.work__new-tag__delete(@click="$emit('remove', index)")
 
     template(v-else)
       li.tags__item(v-for="tag in tags" :key="tag") {{tag}} 
@@ -22,11 +22,6 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-
-.edit-form__row {
-  margin-bottom: 30px;
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;

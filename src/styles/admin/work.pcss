@@ -61,13 +61,14 @@
     &.filled{
         background: center center no-repeat/cover;
         z-index: 100;
+        width: 100%;
+        min-height: auto;
             .work__new-ipg__add{
                 display: none;
             }
             .work__new-ipg__text{
                 display: none;
             }
-
     }
 }
 
@@ -76,6 +77,7 @@
     @include tablets{
         width: 100%;
     }
+
 }
 
 .work__new-content__left{
@@ -128,7 +130,6 @@
     font-weight: 400;
     line-height: 30px;
     border: none;
-    border-bottom: 2px solid #414c63;
     &-textarea{
         border: 1px solid rgba(#414c63, .2);
     }
@@ -408,4 +409,16 @@
     position: absolute;
     top: 0;
     left: -9999px;
+}
+
+.edit-form__row {
+  margin-bottom: 30px;
+}
+
+.work__avatar-error {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
 }
