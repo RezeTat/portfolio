@@ -1,10 +1,13 @@
 <template lang="pug">
-  .skill-container(v-if="editmode === false")
+  .skill-container
     .skills__card-title__text
       h2 {{category.category}}
       .skills__card-title__buttons
-        button.skills__card-title__btn.is-pencil(type="button" @click="editmode = true")
-        button.skills__card-title__btn.is-trash(type="button" @click.prevent="removeExistedCategory") 
+        button.skills__card-title__btn.is-pencil(type="button" @click.prevent="editMode = true")
+        button.skills__card-title__btn.is-trash(
+          type="button" 
+          @click="removeExistedCategory"
+          ) 
     hr
     table.skills
       skills-item(
@@ -33,20 +36,20 @@
       h2 
         input(type="text" v-model="editedCategory.category")
       .skills__card-title__buttons
-        button.skills__card-title__btn.is-tick(type="button" @click="saveCategory")
-        button.skills__card-title__btn.is-cross(type="button" @click="editmode = false") 
-    hr
+        button.skills__card-title__btn.is-tick(type="button" @click="changeSkillTitle")
+        button.skills__card-title__btn.is-cross(type="button"  @click.prevent="editMode = false")
     table.skills
       skills-item(
         v-for="skill in skills"
         :key="skill.id"
         :skill="skill"
       )
-    hr
+  
     .add-skill-wrapper.blocked
       input.elem__new(type="text" v-model="skill.title" placeholder="Новый навык")
       input.elem__percent(type="text" v-model="skill.percent" placeholder="100%")
       button.skills__new-add(type="button" @click="addNewSkill")
+
 </template>
 
 <script>
@@ -66,6 +69,8 @@ export default {
   props: {
     category: Object,
     skills: Array,
+    value: String,
+    errorText: String
   },
   data() {
     return {
@@ -84,15 +89,54 @@ export default {
   methods: {
     ...mapActions('skills', ['addSkill ']), 
     ...mapActions("categories", ["removeCategories", "editCategories"]),
+      ...mapActions("tooltips", ["showTooltip"]),
     async removeExistedCategory() {
+      if (confirm("Удалить группу?") === false) return;
+
+      this.editmode = false;
+
       try {
-        await this.removeCategories(this.category.id);
-      } catch (error) {}
-    }, 
+        const response = await this.removeCategories(this.category.id);
+        this.showTooltip({
+          type: "success",
+          text: "Категория удалена"
+        });
+      } catch (error) {
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
+      }
+    },
+      async changeSkillTitle() {
+      try {
+        const response = await this.editCategories({
+          id: this.category.id,
+          title: this.newTitle
+        });
+
+        this.editmode = false;
+
+        this.showTooltip({
+          type: "success",
+          text: "Имя категории обновлено"
+        });
+      } catch (error) {
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
+      }
+    },
     async saveCategory() {
+      this.editedCategory.title = this.editedCategory.category
       try {
         await this.editCategories(this.editedCategory);
         this.editmode = false;
+       this.showTooltip({
+          type: "success",
+          text: "Категория сохранена"
+        });
       } catch (error) {
         alert('Произошла ошибка при сохранении')
       }

@@ -22,9 +22,6 @@ window.addEventListener('scroll', e=>{
         moveLayersDependsOnScroll(wScroll,paral.children);
     });
 
-    if(wScroll>=2700){
-        
-    }
     
 });
 

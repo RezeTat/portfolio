@@ -1,68 +1,125 @@
-
 <template lang="pug">
-.about-page-container
-  .container
-    .about-page__title
-      h1.page-title Обо мне
-      button.about-page__add-new(
-        @click="showAddingForm = true"
-        v-if="showAddingForm === false"
+  .about-page-container
+    .container
+      .about-page__title
+        h1.page-title {{pageTitle}}
+        button.about-page__add-new(
+          v-if="showAddingCard === false"
+          @click="showAddingCard = true"
         ) Добавить группу
 
     .about-page__content
       .container.container--mobile-wide
         ul.skill-list
-          li.skill-list__item(v-if="showAddingForm")
-            skills-add
           li.skill-list__item(
-            v-for="category in categories"
-            :key="category.id"
+            v-if="showAddingCard"
+            :class="{'loading': loading}"
+          )
+            add-new-skills-group(
+              v-model="title"
+              :errorText="validation.firstError('title')"
+              @closeOrRemove="close"
+              @approve="addSkillsGroup"
             )
-            skills-group(
-              :category="category"
-              :skills="filterSkillsByCategoryId(category.id)"
-              )
+          li.skill-list__item(v-for="skillsCategory in skillsCategories")
+            skills-card 
+              template(slot="title")
+                skills-title(
+                  :categoryData="skillsCategory"
+                )
+              template(slot="content")
+                .skill-list__table
+                  skills-table(
+                    :categoryId="skillsCategory.id"
+                  )
+                .add-new
+                  add-new-skill(
+                    :categoryId="skillsCategory.id"
+                  )
 </template>
-
-
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
+import { Validator } from "simple-vue-validator";
+
 export default {
-  components: {
-    skillsAdd: () => import('components/skills-add.vue'),
-    skillsGroup: () => import('components/skills-group.vue')
+  mixins: [require("simple-vue-validator").mixin],
+  validators: {
+    title: value => {
+      return Validator.value(value).required("Заполните название");
+    }
   },
-  data() {
-    return {
-      showAddingForm: false 
+  components: {
+    skillsCard: () => import("components/card.vue"),
+    appInput: () => import("components/input.vue"),
+    addNewSkillsGroup: () => import("components/skills-add-group.vue"),
+    addNewSkill: () => import("components/skills-add-item.vue"),
+    skillsTable: () => import("components/skills-items.vue"),
+    skillsTitle: () => import("components/skills-title.vue")
+  },
+  props: {
+    pageTitle: {
+      type: String,
+      default: ""
     }
   },
   computed: {
-    ...mapState('categories', {
-      categories: state => state.categories
-    }),
-    ...mapState('skills', {
-      skills: state => state.skills
+    ...mapState("skills", {
+      skillsCategories: state => state.categories
     })
   },
-  methods: {
-    ...mapActions('categories', ['fetchCategories']),
-    ...mapActions('skills', ['fetchSkills']),
-    filterSkillsByCategoryId(categoryId) {
-      return this.skills.filter(skill => skill.category === categoryId);
-    }
+  data() {
+    return {
+      showAddingCard: false,
+      loading: false,
+      title: ""
+    };
   },
-  async created() {
-    try {
-      await this.fetchCategories(); 
-    } catch (error) {
-      alert('Произошла ошибка при загрузке категорий') 
-    }
+  created() {
+    this.collectCategories();
+  },
+  methods: {
+    ...mapActions("skills", ["storeSkillsGroup", "fetchCategories"]),
+    ...mapActions("tooltips", ["showTooltip"]),
+    ...mapMutations("skills", ["ADD_SKILLS_CATEGORY"]),
+    close() {
+      this.showAddingCard = false;
+      this.title = "";
+    },
+    async collectCategories() {
+      try {
+        await this.fetchCategories();
+      } catch (error) {
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
+      }
+    },
+    async addSkillsGroup() {
+      if ((await this.$validate()) === false) return;
 
-    try {
-      await this.fetchSkills(); 
-    } catch (error) {
-      alert('Произошла ошибка при загрузке скиллов') 
+      this.loading = true;
+      try {
+        const response = await this.storeSkillsGroup({
+          title: this.title
+        });
+
+        this.showAddingCard = false;
+        this.title = "";
+
+        this.showTooltip({
+          type: "success",
+          text: "Группа создана"
+        });
+      } catch (error) {
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
+      } finally {
+        this.loading = false;
+        this.validation.reset();
+      }
     }
   }
 };
@@ -73,20 +130,6 @@ export default {
 
 .about-page-container{
   padding-top: 60px;
-}
-
- .skill-container {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.skill-list{
-  display: flex;
-  flex-wrap: wrap;
-  @include phones{
-      margin-right: -30px;
-      margin-left: -20px;
-  }
 }
 
 .about-page__title {
@@ -109,27 +152,35 @@ export default {
 }
 
 .about-page__add-new {
-  padding-left: 60px;
-    background: transparent;
-    color: #383bcf;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 34px;
+  color: $links-color;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 0;
 
   &:before {
-    color: #fff;
     content: "+";
-    font-size: 15px;
-    font-weight: 400;
+    display: block;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
+    background-image: linear-gradient(to right, #006aed, #3f35cb);
+    line-height: 20px;
+    color: #fff;
     margin-right: 13px;
-    padding: 0 6px;
-    background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    flex-shrink: 0;
+    flex-basis: 20px;
   }
-    @include phones{
-      padding-left: 0;
-      text-align: left;
+}
+
+.skills {
+  margin-bottom: 60px;
+
+  tr:last-child {
+    .skills__cell {
+      padding-bottom: 0;
     }
+  }
 }
 
 .skill-list {
@@ -158,4 +209,21 @@ export default {
     margin-bottom: 12px;
   }
 }
+
+.skill-list__table {
+  margin-bottom: 40px;
+}
+
+.add-new {
+  padding-left: 18%;
+  position: relative;
+  margin-top: auto;
+
+  @include phones {
+    padding-left: 0;
+  }
+}
 </style>
+
+
+

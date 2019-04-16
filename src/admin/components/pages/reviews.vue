@@ -63,7 +63,7 @@ export default {
     this.collectReviews();
   },
   methods: {
-    ...mapActions('reviews', ["fetchReviews"]),
+    ...mapActions("reviews", ["fetchReviews"]),
     ...mapActions("tooltips", ["showTooltip"]),
     updateWork() {
       this.mode = "edit";

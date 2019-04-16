@@ -15,16 +15,12 @@
           p {{work.description}}
         a.works__link {{work.link}}
         .works__btns
-          iconedBtn(
-            class="is-pencil"
-            data-text="Править"
+          button(
             @click="updateWork"
-          )
-          iconedBtn(
-            class="is-cross"
-            data-text="Удалить"
+          ).btn__correct Править
+          button(
             @click="removeExistedWork"
-          )
+          ).btn__delete Удалить
 </template>
 
 <script>

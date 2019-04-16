@@ -6,7 +6,9 @@
       section.menu
         tabs
       main.content-container
-        router-view
+        router-view(:pageTitle="$route.meta.title")
+    .tooltips-container(:class="{'showed' : showed}")
+        tooltip(type="error")
             
 </template>                          
 
@@ -31,6 +33,20 @@ export default {
 @import "../styles/admin/about.pcss";
 @import "../styles/admin/work.pcss";
 @import "../styles/admin/reviews.pcss";
+
+.tooltips-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 110%);
+  visibility: hidden;
+  transition: 0.3s;
+
+  &.showed {
+    transform: translate(-50%, 0%);
+    visibility: visible;
+  }
+}
 </style>
 
 

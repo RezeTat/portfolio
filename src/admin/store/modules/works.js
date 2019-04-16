@@ -1,74 +1,70 @@
-const works = {
-    namespased: true,
-    state:{
-        works:[],
-        editedWork: {},
+import { wrapIntoFormData } from "@/helpers/forms";
+import { generateStdError } from "@/helpers/errorHandler";
+
+export default {
+  namespaced: true,
+  state: {
+    works: [],
+    currentWork: {}
+  },
+  mutations: {
+    SET_WORKS: (state, works) => (state.works = works),
+    ADD_WORK: (state, work) => state.works.push(work),
+    REMOVE_WORK: (state, removedWorkId) => {
+      state.works = state.works.filter(work => work.id !== removedWorkId);
     },
-    mutations:{
-        ADD_WORK: (state, newWork) =>{
-            state.works.push(newWork);
-        },
-        SET_CURRENT_WORK:(state, works)=>{
-            state.works=works
-        },
-        REMOVE_WORK: (state, deletedWorkId) =>{
-            state.works = state.works.filter(work =>work.id !== deletedWorkId);
-          },
-        EDIT_WORK: (state, editedWork) =>{
-            state.works = state.works.map(work => work.id === editedWork.id ? editedWork : work);
-          }
+    SET_CURRENT_WORK: (state, updatedWorkId) => {
+      state.currentWork = state.works.filter(
+        work => work.id === updatedWorkId
+      )[0];
     },
-    actions:{
-        async addNewWork({commit}, work){
-            formData.append('title', work.title);
-            formData.append('link', work.link);
-            formData.append('desc', work.description);
-            formData.append('techs', work.techs);
-            formData.append('photo', work.photo);
-            try{
-                const response = await this.$axios.post('/works', formData)
-                commit('ADD_WORK', response.data);
-                return response
-            } catch(error){
-                throw new Error(
-                    error.response.data.error || error.response.data.message
-                );
-            }
-        },
-        async fetchWorks({commit}, work){
-            try{
-                const response = await this.$axios.get('/works/132', work)
-                commit('SET_CURRENT_WORK', response.data)
-                return response
-            } catch(error){
-                alert('error')
-            }
-        },
-        async removeWork({ commit }, workId) {
-            try {
-              const response = await this.$axios.delete(`/works/${workId}`);
-              commit("REMOVE_WORK", workId);
-              return response;
-            } catch (error) {
-              generateStdError(error);
-            }
-        },
-        async editWork({ commit }, work) {
-            formData.append('title', work.title);
-            formData.append('link', work.link);
-            formData.append('desc', work.description);
-            formData.append('techs', work.techs);
-            formData.append('photo', work.photo);
-            try {
-              const response = await this.$axios.post(`/works/${work.id}`, formData);
-              commit('EDIT_WORK', response.data.work);
-              return response;
-            } catch (error) {
-              throw new Error(
-                error.response.data.error || error.response.data.message
-              );
-            }
-          },
+    UPDATE_WORK: (state, updatedWork) => {
+      state.works = state.works.map(work =>
+        work.id === updatedWork.id ? updatedWork : work
+      );
     }
+  },
+  actions: {
+    async storeWork({ commit }, payload) {
+      const data = wrapIntoFormData(payload);
+      try {
+        const response = await this.$axios.post("/works", data);
+        commit("ADD_WORK", response.data);
+        return response;
+      } catch (error) {
+        generateStdError(error);
+      }
+    },
+    async fetchWorks({ commit, rootGetters }) {
+      try {
+        const userId = rootGetters['user/userId'];
+        const response = await this.$axios.get(`/works/132`);
+        commit("SET_WORKS", response.data);
+        return response;
+      } catch (error) {
+        generateStdError(error);
+      }
+    },
+    async removeWork({ commit }, workId) {
+      try {
+        const response = await this.$axios.delete(`/works/${workId}`);
+        commit("REMOVE_WORK", workId);
+        return response;
+      } catch (error) {
+        generateStdError(error);
+      }
+    },
+    async updateWork({ commit }, payload) {
+      const data = wrapIntoFormData(payload);
+      try {
+        const response = await this.$axios.post(`/works/${payload.id}`, data);
+
+        commit("UPDATE_WORK", response.data.work);
+
+        return response;
+      } catch (error) {
+        generateStdError(error);
+      }
+    }
+  }
 };
-export default works;
