@@ -29,7 +29,6 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
 @import "../styles/admin/header.pcss";
-@import "../styles/admin/menu.pcss";
 @import "../styles/admin/about.pcss";
 @import "../styles/admin/work.pcss";
 @import "../styles/admin/reviews.pcss";
@@ -41,11 +40,10 @@ export default {
   transform: translate(-50%, 110%);
   visibility: hidden;
   transition: 0.3s;
-
-  &.showed {
-    transform: translate(-50%, 0%);
-    visibility: visible;
-  }
+    &.showed {
+      transform: translate(-50%, 0%);
+      visibility: visible;
+    }
 }
 </style>
 

@@ -35,46 +35,6 @@
     height: 17px;
     display: block;
   }
-
-  /* @each $icon, $fill in (pencil, cross, tick, trash),
-    (#3942cc, #c73033, #00d70a, #414c62)
-  { 
-     &.is-$(icon) {
-      &:after {
-        background: svg-load("$(icon).svg", fill=$(fill))
-          center
-          center
-          no-repeat /
-          contain;
-      }
-    } 
-   } 
-
-   &.grayscale {
-    @each $icon, $fill in (pencil, cross, tick, trash),
-      (#3942cc, #c73033, #00d70a, #414c62)
-    { 
-       &.is-$(icon) {
-        &:after {
-          background: svg-load("$(icon).svg", fill=#a0a5b1)
-            center
-            center
-            no-repeat /
-            contain;
-        } 
-
-         &:hover {
-          &:after {
-            background: svg-load("$(icon).svg", fill=$(fill))
-              center
-              center
-              no-repeat /
-              contain;
-          }
-        }
-      }  */
-     /* }
-  } */
 }
 </style>
 
