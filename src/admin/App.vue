@@ -41,11 +41,10 @@ export default {
   transform: translate(-50%, 110%);
   visibility: hidden;
   transition: 0.3s;
-
-  &.showed {
-    transform: translate(-50%, 0%);
-    visibility: visible;
-  }
+    &.showed {
+      transform: translate(-50%, 0%);
+      visibility: visible;
+    }
 }
 </style>
 

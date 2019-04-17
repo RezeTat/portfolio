@@ -73,11 +73,9 @@ export default {
   &_iconed {
     .input__title {
       display: block;
-      /* margin-left: 45px; */
       margin-bottom: 13px;
     }
     .input__admin {
-      /* padding-left: 45px; */
       background: left center / auto 29px no-repeat;
       font-size: 18px;
       font-weight: 400;
