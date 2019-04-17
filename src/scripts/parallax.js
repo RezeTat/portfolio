@@ -1,4 +1,4 @@
-const parallax = document.querySelectorAll('.parallax')[0];
+const parallax = document.querySelectorAll('.parallax');
 
 function moveLayersDependsOnScroll(wScroll,layers){
 
@@ -22,16 +22,6 @@ window.addEventListener('scroll', e=>{
         moveLayersDependsOnScroll(wScroll,paral.children);
     });
 
-    const rect = parallax.getBoundingClientRect();
-    parallax.innerHTML = "ширина = " + rect.width + "<br>";
-    parallax.innerHTML += "высота = " + rect.height + "<br>";
-    parallax.innerHTML += "сверху = " + rect.top + "<br>";
-    parallax.innerHTML += "слева = "  + rect.left + "<br>";
-    console.log(rect);
-    
-    if(wScroll>=2700){
-
-    }
     
 });
 
