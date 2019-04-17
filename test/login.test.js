@@ -24,22 +24,6 @@ test("На странице есть кнопка “Авторизоватьс�
             }
         });
 });
-test('При клике на кнопку появляется форма', () => {
-    return client
-        .click('.login__send-data')
-        .isVisible('about.vue')
-        .then(browsers => {
-            for (const browserName in browsers) {
-                expect(browsers[browserName]).toBe(true);
-            }
-        })
-        .screenshot()
-        .then(screenshots => {
-            for (const browserName in screenshots) {
-                fs.writeFileSync(`./screenshots/login_${browserName}_has_form.png`, screenshots[browserName].value, 'base64');
-            }
-        })
-});
 
 afterAll(() => {
     return client.end();
