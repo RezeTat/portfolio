@@ -35,7 +35,14 @@ export default {
   data() {
     return {
       mode: "",
-      showAddingForm: false
+      showAddingForm: false,
+      review: {
+        id: null,
+        photo: null,
+        author: "",
+        occ: "",
+        text: ""
+      }
     };
   },
   components: {

@@ -1,0 +1,16 @@
+script(type="text/x-template")#reviews-container
+    .review-section__content
+        flickity(ref="flickity" :options="flickityOptions").review-section__list
+            .review-section__item.carousel-cell(
+                v-for="review in reviews"
+                :key="review.id"
+            )
+                +icon('quote', 'quote-class')
+            .review-section__desc
+                article.review-section__text {{review.text}}
+                .review-sub
+                    .review-sub__icon
+                        img.review-ipg(:src="review.photo")
+                .review-sub__text
+                    span.review-sub__text-name {{review.author}}
+                    span.review-sub__text-job {{review.occ}}

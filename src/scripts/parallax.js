@@ -1,28 +1,22 @@
-const parallax = document.querySelectorAll('.parallax');
+const parallax = document.querySelector(".parallax");
+const layers = parallax.children;
 
-function moveLayersDependsOnScroll(wScroll,layers){
+const layersToExclude = [0, 4, 6]; // чувак на горе, самые нижние облака
 
-    Array.from(layers).forEach(layer=>{
-
-        const divider = layer.dataset.speed;
-        const strafe = wScroll * divider / 10;
-
-        layer.style.transform = `translateY(-${strafe}%)`;
-    });
+function moveLayersDependsOnScroll(wscroll) {
+  Array.from(layers).forEach((layer, layerIndex) => {
+    const strafe = `${wscroll / (-layerIndex * 40)}%`;
+    if (layersToExclude.includes(layerIndex) === false) {
+      layer.style.transform = `translateY(${strafe})`;
+    }
+  });
 }
 
 const windowWidth = document.body.clientWidth;
 
-if (windowWidth>767){
-
-window.addEventListener('scroll', e=>{
+if (windowWidth > 768) {
+  window.addEventListener("scroll", e => {
     const wScroll = window.pageYOffset;
-
-    Array.from(parallax).forEach(paral=>{
-        moveLayersDependsOnScroll(wScroll,paral.children);
-    });
-
-    
-});
-
+    moveLayersDependsOnScroll(wScroll);
+  });
 }

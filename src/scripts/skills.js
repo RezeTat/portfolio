@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { createClient } from 'http';
+import axios from 'axios';
 
 const skill = {
     template: "#skill",
@@ -24,7 +25,8 @@ const skillsRow = {
         skill
     },
     props:{
-        skill: Object
+        category: Object,
+        skills: Array
     }
 }
 
@@ -36,11 +38,30 @@ new Vue ({
     },
     data() {
         return {
-            skills: {}
+            skills: [],
+            categories: []
         }
     },
-    created(){
-        const data = require("../data/skills.json");
-        this.skills = data;
+    methods: {
+        filterSkillsByCategoryId(categoryId) {
+            return this.skills.filter(skill => skill.category === categoryId);
+        }
+    },
+    async created() {
+        try {
+            const response = await axios.get('https://webdev-api.loftschool.com/categories/132');
+                this.categories = response.data;
+                return response;
+        } catch (error) {
+            console.log('ошибка добавления категории');
+        }
+        try {
+            const response = await axios.get('https://webdev-api.loftschool.com/skills/132');
+                this.skills = response.data;
+                return response;
+        } catch (error) {
+            console.log('ошибка добавления скиллов');
+        }
     }
-})
+}) 
+

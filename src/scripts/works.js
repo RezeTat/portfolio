@@ -1,4 +1,5 @@
 import Vue from "vue";
+import axios from "axios";
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -63,12 +64,15 @@ new Vue({
   data() {
     return {
       works: [],
-      currentIndex: 0
+      currentIndex: 0,
     };
   },
   computed: {
     currentWork() {
       return this.works[this.currentIndex];
+    },
+    splicedWorks(){
+      return [...this.works].splice(0, 3);
     }
   },
   watch: {
@@ -93,16 +97,28 @@ new Vue({
     handleSlide(direction) {
       switch (direction) {
         case "next":
+          // this.works.push(this.works[0]);
+          // this.works.shift();
           this.currentIndex++;
           break;
         case "prev":
+          // const lastItem = this.works[this.works.length-1];
+          // this.works.unshift(lastItem);
+          // this.works.pop();
           this.currentIndex--;
           break;
       }
+    },
+    setSlide(index) {
+      this.currentIndex = index;
     }
   },
-  created() {
-    const data = require("../data/works.json");
-    this.works = this.makeArrWithRequiredImages(data);
+  async created(){
+    try {
+      const response = await axios.get('https://webdev-api.loftschool.com/works/132');  
+      this.works = this.imagesRequired(response.data);
+    } catch (error) {
+      
+    }
   }
 });

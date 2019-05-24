@@ -140,48 +140,7 @@ html(lang="en")
                     +icon('arrow-down', 'scroll-prev__icon')
                   button.slaider__scroll-next(@click="next()")
                     +icon('arrow-down', 'scroll-next__icon')
-              .review-section__content
-                flickity(ref="flickity" :options="flickityOptions").review-section__list
-                  .review-section__item.carousel-cell
-                    +icon('quote', 'quote-class')
-                    .review-section__desc
-                      article.review-section__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                      .review-sub
-                        .review-sub__icon
-                          +image('content/Kovalchuk.jpg', 'review-ipg', "аватар")
-                        .review-sub__text
-                          span.review-sub__text-name Ковальчук Дмитрий
-                          span.review-sub__text-job Основатель Loftschool
-                  .review-section__item.carousel-cell
-                    +icon('quote', 'quote-class')
-                    .review-section__desc
-                      article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
-                      .review-sub
-                        .review-sub__icon
-                          +image('content/sabancev.jpg', 'review-ipg', "аватар")
-                        .review-sub__text
-                          span.review-sub__text-name Владимир Сабанцев
-                          span.review-sub__text-job Преподаватель
-                  .review-section__item.carousel-cell
-                    +icon('quote', 'quote-class')
-                    .review-section__desc
-                      article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
-                      .review-sub
-                        .review-sub__icon
-                          +image('content/sabancev.jpg', 'review-ipg', "аватар")
-                        .review-sub__text
-                          span.review-sub__text-name Владимир Сабанцев
-                          span.review-sub__text-job Преподаватель
-                  .review-section__item.carousel-cell
-                    +icon('quote', 'quote-class')
-                    .review-section__desc
-                      article.review-section__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
-                      .review-sub
-                        .review-sub__icon
-                          +image('content/sabancev.jpg', 'review-ipg', "аватар")
-                        .review-sub__text
-                          span.review-sub__text-name Владимир Сабанцев
-                          span.review-sub__text-job Преподаватель
+              #reviews-component
           section.contact-section#contacts
             .container
               h2.contact-section__title Связаться со мной
